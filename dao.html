@@ -17,11 +17,9 @@
         }
         a { color: #00e5ff; text-decoration: none; }
         .container { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
-
         .glow { position: fixed; border-radius: 50%; filter: blur(150px); opacity: 0.12; pointer-events: none; z-index: 0; }
         .glow-1 { width: 600px; height: 600px; background: #ffd700; top: -200px; right: -100px; }
         .glow-2 { width: 600px; height: 600px; background: #6C3CE1; bottom: -200px; left: -100px; }
-
         header {
             position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
             padding: 12px 0; background: rgba(7,9,15,0.92); backdrop-filter: blur(20px);
@@ -36,19 +34,16 @@
         .nav-links a:hover { color: #fff; background: rgba(108,60,225,0.12); }
         .nav-links .active { color: #fff; background: rgba(108,60,225,0.15); }
         .btn-buy { background: linear-gradient(135deg, #6C3CE1, #00d4ff); color: #0b0e1a !important; padding: 6px 18px; border-radius: 40px; font-weight: 700; }
-
         .page-header { text-align: center; padding: 20px 0; }
         .page-header h1 { font-size: 2.5rem; font-weight: 900; }
         .page-header h1 span { background: linear-gradient(135deg, #6C3CE1, #00d4ff); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
         .page-header p { color: #8892b0; }
-
         .stats-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 12px; padding: 20px 0; }
         .stat-card { background: rgba(255,255,255,0.02); border: 1px solid rgba(255,255,255,0.04); border-radius: 14px; padding: 16px; text-align: center; }
         .stat-card .num { font-size: 1.3rem; font-weight: 700; color: #ffd700; }
         .stat-card .lbl { font-size: 0.7rem; color: #8892b0; }
-
         .proposals-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 12px; padding: 16px 0 40px; }
-        .proposal-card { background: rgba(255,255,255,0.02); border: 1px solid rgba(255,255,255,0.04); border-radius: 14px; padding: 16px; transition: 0.2s; }
+        .proposal-card { background: rgba(255,255,255,0.02); border: 1px solid rgba(255,255,255,0.04); border-radius: 14px; padding: 16px; transition: 0.2s; cursor: pointer; }
         .proposal-card:hover { border-color: #ffd700; transform: translateY(-3px); background: rgba(255,215,0,0.04); }
         .proposal-card .status { font-size: 0.55rem; font-weight: 700; padding: 2px 12px; border-radius: 20px; display: inline-block; margin-bottom: 6px; }
         .proposal-card .status.active { background: rgba(20,241,149,0.12); color: #14f195; }
@@ -58,11 +53,9 @@
         .proposal-card .desc { font-size: 0.7rem; color: #8892b0; margin: 4px 0; }
         .proposal-card .votes { font-size: 0.7rem; color: #ffd700; }
         .proposal-card .badge { font-size: 0.55rem; background: rgba(255,215,0,0.12); color: #ffd700; padding: 2px 10px; border-radius: 20px; display: inline-block; margin-top: 4px; }
-
         footer { padding: 24px 0; border-top: 1px solid rgba(255,255,255,0.04); text-align: center; color: #5a6488; font-size: 0.75rem; }
         footer .links a { color: #b0b8d1; margin: 0 12px; font-size: 12px; }
         footer .links a:hover { color: #fff; }
-
         @media (max-width: 700px) {
             body { padding-top: 110px; }
             .header-inner { flex-direction: column; align-items: stretch; text-align: center; }
@@ -72,85 +65,66 @@
     </style>
 </head>
 <body>
-
 <div class="glow glow-1"></div>
 <div class="glow glow-2"></div>
-
 <header>
     <div class="container header-inner">
-        <a href="index.html" class="logo">
-            <img src="https://raw.githubusercontent.com/eximtrustoilbank-sudo/nexus/refs/heads/main/nexus_logo.png" alt="NEXUS">
-            <span>NEXUS</span>
-        </a>
+        <a href="index.html" class="logo"><img src="https://raw.githubusercontent.com/eximtrustoilbank-sudo/nexus/refs/heads/main/nexus_logo.png" alt="NEXUS"><span>NEXUS</span></a>
         <div class="nav-links">
-            <a href="index.html">Home</a>
-            <a href="trade.html">Trade</a>
-            <a href="insurance.html">Insurance</a>
-            <a href="staking.html">Staking</a>
+            <a href="index.html">Главная</a>
+            <a href="trade.html">Торги</a>
+            <a href="insurance.html">Страховка</a>
+            <a href="staking.html">Стейкинг</a>
             <a href="dao.html" class="active">DAO</a>
-            <a href="https://www.geckoterminal.com/solana/pools/FKRKSVTQpCngomVftV6HRhPXAp9BJhbWoFwH1JwY1XA6" target="_blank" class="btn-buy">📊 Buy NEX</a>
+            <a href="https://www.geckoterminal.com/solana/pools/FKRKSVTQpCngomVftV6HRhPXAp9BJhbWoFwH1JwY1XA6" target="_blank" class="btn-buy">📊 Купить NEX</a>
         </div>
     </div>
 </header>
-
 <div class="container">
-    <div class="page-header">
-        <h1>🏛️ <span>DAO</span></h1>
-        <p>Управляй проектом вместе с сообществом</p>
-    </div>
-
+    <div class="page-header"><h1>🏛️ <span>DAO</span></h1><p>Управляй проектом вместе с сообществом</p></div>
     <div class="stats-grid">
         <div class="stat-card"><div class="num">1,247</div><div class="lbl">Всего предложений</div></div>
         <div class="stat-card"><div class="num">18</div><div class="lbl">Активных голосований</div></div>
         <div class="stat-card"><div class="num">82%</div><div class="lbl">Процент одобрения</div></div>
         <div class="stat-card"><div class="num">12.4K</div><div class="lbl">Участников</div></div>
     </div>
-
     <div class="proposals-grid">
-        <div class="proposal-card">
+        <a href="https://snapshot.org/#/" target="_blank" class="proposal-card">
             <div class="status active">🟢 Активно</div>
             <div class="title">Увеличить страховой фонд</div>
             <div class="desc">Направить 10% комиссий в фонд</div>
             <div class="votes">85% За</div>
             <div class="badge">🔥 Горячее</div>
-        </div>
-        <div class="proposal-card">
+        </a>
+        <a href="https://snapshot.org/#/" target="_blank" class="proposal-card">
             <div class="status active">🟢 Активно</div>
             <div class="title">Новая ферма NEX/USDC</div>
             <div class="desc">Запустить ферму с 200% APR</div>
             <div class="votes">72% За</div>
             <div class="badge">⭐ Важное</div>
-        </div>
-        <div class="proposal-card">
+        </a>
+        <a href="https://snapshot.org/#/" target="_blank" class="proposal-card">
             <div class="status ended">🔴 Завершено</div>
             <div class="title">Маркетинг-бюджет</div>
             <div class="desc">Выделить 100K NEX на рекламу</div>
             <div class="votes">94% За</div>
             <div class="badge">✅ Принято</div>
-        </div>
-        <div class="proposal-card">
+        </a>
+        <a href="https://snapshot.org/#/" target="_blank" class="proposal-card">
             <div class="status upcoming">🔵 Ожидается</div>
             <div class="title">DAO-конституция</div>
             <div class="desc">Правила управления сообществом</div>
             <div class="votes">—</div>
             <div class="badge">🆕 Новое</div>
-        </div>
+        </a>
     </div>
 </div>
-
 <footer>
     <div class="container">
-        <div class="links">
-            <a href="index.html">Home</a>
-            <a href="trade.html">Trade</a>
-            <a href="insurance.html">Insurance</a>
-            <a href="staking.html">Staking</a>
-            <a href="dao.html">DAO</a>
-        </div>
+        <div class="links"><a href="index.html">Главная</a><a href="trade.html">Торги</a><a href="insurance.html">Страховка</a><a href="staking.html">Стейкинг</a><a href="dao.html">DAO</a></div>
         <p>📜 6WBoPatSisMYCN8y6xZECu4E9VcMhqyE56vD3zrQbCts</p>
         <p style="margin-top:6px;font-size:0.65rem;color:#5a6488;">© 2026 NEXUS Protocol — Голосуй и управляй</p>
     </div>
 </footer>
-
 </body>
 </html>
