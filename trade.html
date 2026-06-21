@@ -34,6 +34,17 @@
         .nav-links a:hover { color: #fff; background: rgba(108,60,225,0.12); }
         .nav-links .active { color: #fff; background: rgba(108,60,225,0.15); }
         .btn-buy { background: linear-gradient(135deg, #6C3CE1, #00d4ff); color: #0b0e1a !important; padding: 6px 18px; border-radius: 40px; font-weight: 700; }
+        .btn-buy:hover { transform: scale(1.04); box-shadow: 0 0 30px rgba(108,60,225,0.3); }
+        /* ——— LANGUAGE SWITCHER ——— */
+        .lang-switcher { position: relative; display: inline-block; margin-left: 4px; }
+        .lang-btn { background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.08); color: #eef2f8; padding: 4px 12px; border-radius: 40px; font-size: 12px; cursor: pointer; font-weight: 600; transition: 0.2s; display: flex; align-items: center; gap: 4px; }
+        .lang-btn:hover { background: rgba(108,60,225,0.15); border-color: #6C3CE1; }
+        .lang-dropdown { position: absolute; top: 120%; right: 0; background: rgba(7,9,15,0.97); backdrop-filter: blur(20px); border: 1px solid rgba(255,255,255,0.06); border-radius: 16px; padding: 6px 0; min-width: 140px; display: none; z-index: 999; box-shadow: 0 20px 60px rgba(0,0,0,0.6); }
+        .lang-dropdown.show { display: block; }
+        .lang-dropdown button { background: none; border: none; color: #b0b8d1; padding: 6px 18px; width: 100%; text-align: left; font-size: 12px; font-weight: 500; cursor: pointer; transition: 0.1s; font-family: inherit; }
+        .lang-dropdown button:hover { background: rgba(108,60,225,0.08); color: #fff; }
+        .lang-dropdown button.active { color: #00d4ff; font-weight: 700; }
+        /* ——— PAGE ——— */
         .page-header { text-align: center; padding: 20px 0; }
         .page-header h1 { font-size: 2.5rem; font-weight: 900; }
         .page-header h1 span { background: linear-gradient(135deg, #6C3CE1, #00d4ff); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
@@ -62,6 +73,7 @@
             body { padding-top: 110px; }
             .header-inner { flex-direction: column; align-items: stretch; text-align: center; }
             .nav-links { justify-content: center; }
+            .lang-switcher { margin: 4px auto 0; }
             .page-header h1 { font-size: 1.8rem; }
             .tools-grid { grid-template-columns: repeat(auto-fill, minmax(140px, 1fr)); }
         }
@@ -74,75 +86,294 @@
     <div class="container header-inner">
         <a href="index.html" class="logo"><img src="https://raw.githubusercontent.com/eximtrustoilbank-sudo/nexus/refs/heads/main/nexus_logo.png" alt="NEXUS"><span>NEXUS</span></a>
         <div class="nav-links">
-            <a href="index.html">Главная</a>
-            <a href="trade.html" class="active">Торги</a>
-            <a href="insurance.html">Страховка</a>
-            <a href="staking.html">Стейкинг</a>
-            <a href="dao.html">DAO</a>
-            <a href="https://www.geckoterminal.com/solana/pools/FKRKSVTQpCngomVftV6HRhPXAp9BJhbWoFwH1JwY1XA6" target="_blank" class="btn-buy">📊 Купить NEX</a>
+            <a href="index.html" data-i18n="nav-home">Главная</a>
+            <a href="trade.html" class="active" data-i18n="nav-trade">Торги</a>
+            <a href="insurance.html" data-i18n="nav-insurance">Страховка</a>
+            <a href="staking.html" data-i18n="nav-staking">Стейкинг</a>
+            <a href="dao.html" data-i18n="nav-dao">DAO</a>
+            <a href="https://www.geckoterminal.com/solana/pools/FKRKSVTQpCngomVftV6HRhPXAp9BJhbWoFwH1JwY1XA6" target="_blank" class="btn-buy" data-i18n="nav-buy">📊 Купить NEX</a>
+            <!-- Language Switcher -->
+            <div class="lang-switcher">
+                <button class="lang-btn" id="langToggle">🌐 <span id="currentLangLabel">RU</span></button>
+                <div class="lang-dropdown" id="langDropdown">
+                    <button data-lang="ru" class="active">🇷🇺 Русский</button>
+                    <button data-lang="en">🇬🇧 English</button>
+                    <button data-lang="es">🇪🇸 Español</button>
+                    <button data-lang="fr">🇫🇷 Français</button>
+                    <button data-lang="de">🇩🇪 Deutsch</button>
+                    <button data-lang="zh">🇨🇳 中文</button>
+                    <button data-lang="ja">🇯🇵 日本語</button>
+                    <button data-lang="ko">🇰🇷 한국어</button>
+                </div>
+            </div>
         </div>
     </div>
 </header>
 <div class="container">
-    <div class="page-header"><h1>📊 <span>Торговая платформа</span></h1><p>Покупай, продавай и управляй своими NEX в реальном времени</p></div>
+    <div class="page-header"><h1>📊 <span data-i18n="page-title">Торговая платформа</span></h1><p data-i18n="page-desc">Покупай, продавай и управляй своими NEX в реальном времени</p></div>
     <div class="swap-widget">
-        <div class="row"><span>Отдаёте</span><span>Баланс: 12,450 NEX</span></div>
+        <div class="row"><span data-i18n="swap-from">Отдаёте</span><span data-i18n="swap-balance">Баланс: 12,450 NEX</span></div>
         <div class="input-box"><input type="text" value="1000" /><div class="token"><span class="dot dot-nex"></span> NEX</div></div>
         <div class="swap-arrow">⬇️</div>
-        <div class="row"><span>Получаете</span><span>Баланс: 245.80 USDC</span></div>
+        <div class="row"><span data-i18n="swap-to">Получаете</span><span data-i18n="swap-balance2">Баланс: 245.80 USDC</span></div>
         <div class="input-box"><input type="text" value="0.10" placeholder="0.00" /><div class="token"><span class="dot dot-usdc"></span> USDC</div></div>
-        <button class="btn-swap" onclick="window.open('https://www.geckoterminal.com/solana/pools/FKRKSVTQpCngomVftV6HRhPXAp9BJhbWoFwH1JwY1XA6', '_blank')">🚀 Обменять NEX → USDC</button>
-        <div class="swap-info"><span>Курс: 1 NEX ≈ 0.0001 USDC</span><span>Комиссия: 0.3%</span></div>
+        <button class="btn-swap" onclick="window.open('https://www.geckoterminal.com/solana/pools/FKRKSVTQpCngomVftV6HRhPXAp9BJhbWoFwH1JwY1XA6', '_blank')" data-i18n="swap-btn">🚀 Обменять NEX → USDC</button>
+        <div class="swap-info"><span data-i18n="swap-rate">Курс: 1 NEX ≈ 0.0001 USDC</span><span data-i18n="swap-fee">Комиссия: 0.3%</span></div>
     </div>
-    <div class="section-title">⚡ Быстрая торговля</div>
+    <div class="section-title" data-i18n="section1">⚡ Быстрая торговля</div>
     <div class="tools-grid">
-        <a href="https://jup.ag/" target="_blank" class="tool-card"><span class="icon">📈</span> Рыночный ордер</a>
-        <a href="https://jup.ag/limit" target="_blank" class="tool-card"><span class="icon">📉</span> Лимитный ордер</a>
-        <a href="https://www.binance.com/en/trade/" target="_blank" class="tool-card"><span class="icon">🛑</span> Стоп-лосс</a>
-        <a href="https://www.binance.com/en/trade/" target="_blank" class="tool-card"><span class="icon">🎯</span> Тейк-профит</a>
-        <a href="https://www.bybit.com/trade/" target="_blank" class="tool-card"><span class="icon">🔄</span> OCO-ордер</a>
-        <a href="https://www.kucoin.com/trade/" target="_blank" class="tool-card"><span class="icon">🧊</span> Айсберг-ордер</a>
+        <a href="https://jup.ag/" target="_blank" class="tool-card"><span class="icon">📈</span> <span data-i18n="tool1">Рыночный ордер</span></a>
+        <a href="https://jup.ag/limit" target="_blank" class="tool-card"><span class="icon">📉</span> <span data-i18n="tool2">Лимитный ордер</span></a>
+        <a href="https://www.binance.com/en/trade/" target="_blank" class="tool-card"><span class="icon">🛑</span> <span data-i18n="tool3">Стоп-лосс</span></a>
+        <a href="https://www.binance.com/en/trade/" target="_blank" class="tool-card"><span class="icon">🎯</span> <span data-i18n="tool4">Тейк-профит</span></a>
+        <a href="https://www.bybit.com/trade/" target="_blank" class="tool-card"><span class="icon">🔄</span> <span data-i18n="tool5">OCO-ордер</span></a>
+        <a href="https://www.kucoin.com/trade/" target="_blank" class="tool-card"><span class="icon">🧊</span> <span data-i18n="tool6">Айсберг-ордер</span></a>
     </div>
-    <div class="section-title">🤖 Автоматические стратегии</div>
+    <div class="section-title" data-i18n="section2">🤖 Автоматические стратегии</div>
     <div class="tools-grid">
-        <a href="https://jup.ag/dca" target="_blank" class="tool-card"><span class="icon">📊</span> DCA (Усреднение)</a>
-        <a href="https://jup.ag/twap" target="_blank" class="tool-card"><span class="icon">⏱️</span> TWAP</a>
-        <a href="https://www.binance.com/en/grid-bot" target="_blank" class="tool-card"><span class="icon">📦</span> Сеточная торговля</a>
-        <a href="https://www.kucoin.com/" target="_blank" class="tool-card"><span class="icon">🔁</span> Ребалансировка</a>
-        <a href="https://arbitrum.io/" target="_blank" class="tool-card"><span class="icon">⚡</span> Арбитраж</a>
-        <a href="https://dexscreener.com/" target="_blank" class="tool-card"><span class="icon">🎯</span> Снайпер</a>
+        <a href="https://jup.ag/dca" target="_blank" class="tool-card"><span class="icon">📊</span> <span data-i18n="tool7">DCA (Усреднение)</span></a>
+        <a href="https://jup.ag/twap" target="_blank" class="tool-card"><span class="icon">⏱️</span> <span data-i18n="tool8">TWAP</span></a>
+        <a href="https://www.binance.com/en/grid-bot" target="_blank" class="tool-card"><span class="icon">📦</span> <span data-i18n="tool9">Сеточная торговля</span></a>
+        <a href="https://www.kucoin.com/" target="_blank" class="tool-card"><span class="icon">🔁</span> <span data-i18n="tool10">Ребалансировка</span></a>
+        <a href="https://arbitrum.io/" target="_blank" class="tool-card"><span class="icon">⚡</span> <span data-i18n="tool11">Арбитраж</span></a>
+        <a href="https://dexscreener.com/" target="_blank" class="tool-card"><span class="icon">🎯</span> <span data-i18n="tool12">Снайпер</span></a>
     </div>
-    <div class="section-title">📊 Аналитика рынка</div>
+    <div class="section-title" data-i18n="section3">📊 Аналитика рынка</div>
     <div class="tools-grid">
-        <a href="https://www.tradingview.com/" target="_blank" class="tool-card"><span class="icon">📉</span> График цен</a>
-        <a href="https://coingecko.com/" target="_blank" class="tool-card"><span class="icon">📊</span> Объёмы</a>
-        <a href="https://whale-tracker.com/" target="_blank" class="tool-card"><span class="icon">👥</span> Активность китов</a>
-        <a href="https://cryptopanic.com/" target="_blank" class="tool-card"><span class="icon">📰</span> Новости рынка</a>
-        <a href="https://www.coinpredictor.ai/" target="_blank" class="tool-card"><span class="icon">🔮</span> Прогноз AI</a>
-        <a href="https://solscan.io/" target="_blank" class="tool-card"><span class="icon">📋</span> История сделок</a>
+        <a href="https://www.tradingview.com/" target="_blank" class="tool-card"><span class="icon">📉</span> <span data-i18n="tool13">График цен</span></a>
+        <a href="https://coingecko.com/" target="_blank" class="tool-card"><span class="icon">📊</span> <span data-i18n="tool14">Объёмы</span></a>
+        <a href="https://whale-tracker.com/" target="_blank" class="tool-card"><span class="icon">👥</span> <span data-i18n="tool15">Активность китов</span></a>
+        <a href="https://cryptopanic.com/" target="_blank" class="tool-card"><span class="icon">📰</span> <span data-i18n="tool16">Новости рынка</span></a>
+        <a href="https://www.coinpredictor.ai/" target="_blank" class="tool-card"><span class="icon">🔮</span> <span data-i18n="tool17">Прогноз AI</span></a>
+        <a href="https://solscan.io/" target="_blank" class="tool-card"><span class="icon">📋</span> <span data-i18n="tool18">История сделок</span></a>
     </div>
-    <div class="section-title">🛠️ Полезные инструменты</div>
+    <div class="section-title" data-i18n="section4">🛠️ Полезные инструменты</div>
     <div class="tools-grid">
-        <a href="https://www.calculator.net/" target="_blank" class="tool-card"><span class="icon">🧮</span> Калькулятор</a>
-        <a href="https://www.coingecko.com/en/converter" target="_blank" class="tool-card"><span class="icon">📈</span> Конвертер</a>
-        <a href="https://debank.com/" target="_blank" class="tool-card"><span class="icon">📊</span> Портфель</a>
-        <a href="https://cryptocurrencyalerting.com/" target="_blank" class="tool-card"><span class="icon">🔔</span> Оповещения</a>
-        <a href="https://solscan.io/" target="_blank" class="tool-card"><span class="icon">📋</span> История</a>
-        <a href="https://coingecko.com/" target="_blank" class="tool-card"><span class="icon">📤</span> Экспорт</a>
+        <a href="https://www.calculator.net/" target="_blank" class="tool-card"><span class="icon">🧮</span> <span data-i18n="tool19">Калькулятор</span></a>
+        <a href="https://www.coingecko.com/en/converter" target="_blank" class="tool-card"><span class="icon">📈</span> <span data-i18n="tool20">Конвертер</span></a>
+        <a href="https://debank.com/" target="_blank" class="tool-card"><span class="icon">📊</span> <span data-i18n="tool21">Портфель</span></a>
+        <a href="https://cryptocurrencyalerting.com/" target="_blank" class="tool-card"><span class="icon">🔔</span> <span data-i18n="tool22">Оповещения</span></a>
+        <a href="https://solscan.io/" target="_blank" class="tool-card"><span class="icon">📋</span> <span data-i18n="tool23">История</span></a>
+        <a href="https://coingecko.com/" target="_blank" class="tool-card"><span class="icon">📤</span> <span data-i18n="tool24">Экспорт</span></a>
     </div>
 </div>
 <footer>
     <div class="container">
         <div class="links">
-            <a href="index.html">Главная</a>
-            <a href="trade.html">Торги</a>
-            <a href="insurance.html">Страховка</a>
-            <a href="staking.html">Стейкинг</a>
-            <a href="dao.html">DAO</a>
+            <a href="index.html" data-i18n="nav-home">Главная</a>
+            <a href="trade.html" data-i18n="nav-trade">Торги</a>
+            <a href="insurance.html" data-i18n="nav-insurance">Страховка</a>
+            <a href="staking.html" data-i18n="nav-staking">Стейкинг</a>
+            <a href="dao.html" data-i18n="nav-dao">DAO</a>
         </div>
         <p>📜 6WBoPatSisMYCN8y6xZECu4E9VcMhqyE56vD3zrQbCts</p>
-        <p style="margin-top:6px;font-size:0.65rem;color:#5a6488;">© 2026 NEXUS Protocol — Торгуй с умом на Solana</p>
+        <p style="margin-top:6px;font-size:0.65rem;color:#5a6488;" data-i18n="footer-copy">© 2026 NEXUS Protocol — Торгуй с умом на Solana</p>
     </div>
 </footer>
+<script>
+    // ——— ПЕРЕВОДЧИК НА 8 ЯЗЫКОВ ———
+    const translations = {
+        ru: {
+            'nav-home': 'Главная', 'nav-trade': 'Торги', 'nav-insurance': 'Страховка',
+            'nav-staking': 'Стейкинг', 'nav-dao': 'DAO', 'nav-buy': '📊 Купить NEX',
+            'page-title': 'Торговая платформа', 'page-desc': 'Покупай, продавай и управляй своими NEX в реальном времени',
+            'swap-from': 'Отдаёте', 'swap-balance': 'Баланс: 12,450 NEX',
+            'swap-to': 'Получаете', 'swap-balance2': 'Баланс: 245.80 USDC',
+            'swap-btn': '🚀 Обменять NEX → USDC',
+            'swap-rate': 'Курс: 1 NEX ≈ 0.0001 USDC', 'swap-fee': 'Комиссия: 0.3%',
+            'section1': '⚡ Быстрая торговля', 'section2': '🤖 Автоматические стратегии',
+            'section3': '📊 Аналитика рынка', 'section4': '🛠️ Полезные инструменты',
+            'tool1': 'Рыночный ордер', 'tool2': 'Лимитный ордер', 'tool3': 'Стоп-лосс',
+            'tool4': 'Тейк-профит', 'tool5': 'OCO-ордер', 'tool6': 'Айсберг-ордер',
+            'tool7': 'DCA (Усреднение)', 'tool8': 'TWAP', 'tool9': 'Сеточная торговля',
+            'tool10': 'Ребалансировка', 'tool11': 'Арбитраж', 'tool12': 'Снайпер',
+            'tool13': 'График цен', 'tool14': 'Объёмы', 'tool15': 'Активность китов',
+            'tool16': 'Новости рынка', 'tool17': 'Прогноз AI', 'tool18': 'История сделок',
+            'tool19': 'Калькулятор', 'tool20': 'Конвертер', 'tool21': 'Портфель',
+            'tool22': 'Оповещения', 'tool23': 'История', 'tool24': 'Экспорт',
+            'footer-copy': '© 2026 NEXUS Protocol — Торгуй с умом на Solana'
+        },
+        en: {
+            'nav-home': 'Home', 'nav-trade': 'Trade', 'nav-insurance': 'Insurance',
+            'nav-staking': 'Staking', 'nav-dao': 'DAO', 'nav-buy': '📊 Buy NEX',
+            'page-title': 'Trading Platform', 'page-desc': 'Buy, sell and manage your NEX in real time',
+            'swap-from': 'From', 'swap-balance': 'Balance: 12,450 NEX',
+            'swap-to': 'To', 'swap-balance2': 'Balance: 245.80 USDC',
+            'swap-btn': '🚀 Swap NEX → USDC',
+            'swap-rate': 'Rate: 1 NEX ≈ 0.0001 USDC', 'swap-fee': 'Fee: 0.3%',
+            'section1': '⚡ Quick Trade', 'section2': '🤖 Auto Strategies',
+            'section3': '📊 Market Analytics', 'section4': '🛠️ Tools',
+            'tool1': 'Market Order', 'tool2': 'Limit Order', 'tool3': 'Stop-Loss',
+            'tool4': 'Take-Profit', 'tool5': 'OCO Order', 'tool6': 'Iceberg Order',
+            'tool7': 'DCA (Averaging)', 'tool8': 'TWAP', 'tool9': 'Grid Trading',
+            'tool10': 'Rebalancing', 'tool11': 'Arbitrage', 'tool12': 'Sniper',
+            'tool13': 'Price Chart', 'tool14': 'Volumes', 'tool15': 'Whale Activity',
+            'tool16': 'Market News', 'tool17': 'AI Prediction', 'tool18': 'Trade History',
+            'tool19': 'Calculator', 'tool20': 'Converter', 'tool21': 'Portfolio',
+            'tool22': 'Alerts', 'tool23': 'History', 'tool24': 'Export',
+            'footer-copy': '© 2026 NEXUS Protocol — Trade smart on Solana'
+        },
+        es: {
+            'nav-home': 'Inicio', 'nav-trade': 'Comerciar', 'nav-insurance': 'Seguro',
+            'nav-staking': 'Staking', 'nav-dao': 'DAO', 'nav-buy': '📊 Comprar NEX',
+            'page-title': 'Plataforma de Trading', 'page-desc': 'Compra, vende y gestiona tus NEX en tiempo real',
+            'swap-from': 'De', 'swap-balance': 'Balance: 12,450 NEX',
+            'swap-to': 'A', 'swap-balance2': 'Balance: 245.80 USDC',
+            'swap-btn': '🚀 Intercambiar NEX → USDC',
+            'swap-rate': 'Tasa: 1 NEX ≈ 0.0001 USDC', 'swap-fee': 'Comisión: 0.3%',
+            'section1': '⚡ Comercio Rápido', 'section2': '🤖 Estrategias Automáticas',
+            'section3': '📊 Análisis de Mercado', 'section4': '🛠️ Herramientas',
+            'tool1': 'Orden de Mercado', 'tool2': 'Orden Límite', 'tool3': 'Stop-Loss',
+            'tool4': 'Take-Profit', 'tool5': 'Orden OCO', 'tool6': 'Orden Iceberg',
+            'tool7': 'DCA (Promedio)', 'tool8': 'TWAP', 'tool9': 'Trading en Cuadrícula',
+            'tool10': 'Rebalanceo', 'tool11': 'Arbitraje', 'tool12': 'Sniper',
+            'tool13': 'Gráfico de Precios', 'tool14': 'Volúmenes', 'tool15': 'Actividad de Ballenas',
+            'tool16': 'Noticias del Mercado', 'tool17': 'Predicción IA', 'tool18': 'Historial de Operaciones',
+            'tool19': 'Calculadora', 'tool20': 'Convertidor', 'tool21': 'Portafolio',
+            'tool22': 'Alertas', 'tool23': 'Historial', 'tool24': 'Exportar',
+            'footer-copy': '© 2026 NEXUS Protocol — Comercio inteligente en Solana'
+        },
+        fr: {
+            'nav-home': 'Accueil', 'nav-trade': 'Échanger', 'nav-insurance': 'Assurance',
+            'nav-staking': 'Staking', 'nav-dao': 'DAO', 'nav-buy': '📊 Acheter NEX',
+            'page-title': 'Plateforme de Trading', 'page-desc': 'Achetez, vendez et gérez vos NEX en temps réel',
+            'swap-from': 'De', 'swap-balance': 'Solde: 12,450 NEX',
+            'swap-to': 'À', 'swap-balance2': 'Solde: 245.80 USDC',
+            'swap-btn': '🚀 Échanger NEX → USDC',
+            'swap-rate': 'Taux: 1 NEX ≈ 0.0001 USDC', 'swap-fee': 'Frais: 0.3%',
+            'section1': '⚡ Trading Rapide', 'section2': '🤖 Stratégies Automatiques',
+            'section3': '📊 Analyse du Marché', 'section4': '🛠️ Outils',
+            'tool1': 'Ordre de Marché', 'tool2': 'Ordre Limite', 'tool3': 'Stop-Loss',
+            'tool4': 'Take-Profit', 'tool5': 'Ordre OCO', 'tool6': 'Ordre Iceberg',
+            'tool7': 'DCA (Moyenne)', 'tool8': 'TWAP', 'tool9': 'Trading en Grille',
+            'tool10': 'Rééquilibrage', 'tool11': 'Arbitrage', 'tool12': 'Sniper',
+            'tool13': 'Graphique des Prix', 'tool14': 'Volumes', 'tool15': 'Activité des Baleines',
+            'tool16': 'Actualités du Marché', 'tool17': 'Prédiction IA', 'tool18': 'Historique des Transactions',
+            'tool19': 'Calculatrice', 'tool20': 'Convertisseur', 'tool21': 'Portefeuille',
+            'tool22': 'Alertes', 'tool23': 'Historique', 'tool24': 'Exporter',
+            'footer-copy': '© 2026 NEXUS Protocol — Tradez intelligemment sur Solana'
+        },
+        de: {
+            'nav-home': 'Startseite', 'nav-trade': 'Handeln', 'nav-insurance': 'Versicherung',
+            'nav-staking': 'Staking', 'nav-dao': 'DAO', 'nav-buy': '📊 NEX kaufen',
+            'page-title': 'Handelsplattform', 'page-desc': 'Kaufe, verkaufe und verwalte deine NEX in Echtzeit',
+            'swap-from': 'Von', 'swap-balance': 'Saldo: 12,450 NEX',
+            'swap-to': 'An', 'swap-balance2': 'Saldo: 245.80 USDC',
+            'swap-btn': '🚀 Tausche NEX → USDC',
+            'swap-rate': 'Kurs: 1 NEX ≈ 0.0001 USDC', 'swap-fee': 'Gebühr: 0.3%',
+            'section1': '⚡ Schnellhandel', 'section2': '🤖 Automatische Strategien',
+            'section3': '📊 Marktanalyse', 'section4': '🛠️ Werkzeuge',
+            'tool1': 'Marktorder', 'tool2': 'Limitorder', 'tool3': 'Stop-Loss',
+            'tool4': 'Take-Profit', 'tool5': 'OCO-Order', 'tool6': 'Eisberg-Order',
+            'tool7': 'DCA (Mittelung)', 'tool8': 'TWAP', 'tool9': 'Grid-Trading',
+            'tool10': 'Rebalancing', 'tool11': 'Arbitrage', 'tool12': 'Sniper',
+            'tool13': 'Preisdiagramm', 'tool14': 'Volumina', 'tool15': 'Wal-Aktivität',
+            'tool16': 'Marktnachrichten', 'tool17': 'KI-Prognose', 'tool18': 'Handelshistorie',
+            'tool19': 'Rechner', 'tool20': 'Konverter', 'tool21': 'Portfolio',
+            'tool22': 'Alarme', 'tool23': 'Historie', 'tool24': 'Exportieren',
+            'footer-copy': '© 2026 NEXUS Protocol — Klug handeln auf Solana'
+        },
+        zh: {
+            'nav-home': '首页', 'nav-trade': '交易', 'nav-insurance': '保险',
+            'nav-staking': '质押', 'nav-dao': 'DAO', 'nav-buy': '📊 购买 NEX',
+            'page-title': '交易平台', 'page-desc': '实时购买、出售和管理您的 NEX',
+            'swap-from': '从', 'swap-balance': '余额: 12,450 NEX',
+            'swap-to': '到', 'swap-balance2': '余额: 245.80 USDC',
+            'swap-btn': '🚀 兑换 NEX → USDC',
+            'swap-rate': '汇率: 1 NEX ≈ 0.0001 USDC', 'swap-fee': '费用: 0.3%',
+            'section1': '⚡ 快速交易', 'section2': '🤖 自动策略',
+            'section3': '📊 市场分析', 'section4': '🛠️ 工具',
+            'tool1': '市价单', 'tool2': '限价单', 'tool3': '止损',
+            'tool4': '止盈', 'tool5': 'OCO 订单', 'tool6': '冰山订单',
+            'tool7': 'DCA (均价)', 'tool8': 'TWAP', 'tool9': '网格交易',
+            'tool10': '再平衡', 'tool11': '套利', 'tool12': '狙击手',
+            'tool13': '价格图表', 'tool14': '交易量', 'tool15': '鲸鱼活动',
+            'tool16': '市场新闻', 'tool17': 'AI 预测', 'tool18': '交易历史',
+            'tool19': '计算器', 'tool20': '转换器', 'tool21': '投资组合',
+            'tool22': '警报', 'tool23': '历史记录', 'tool24': '导出',
+            'footer-copy': '© 2026 NEXUS Protocol — 在 Solana 上智能交易'
+        },
+        ja: {
+            'nav-home': 'ホーム', 'nav-trade': '取引', 'nav-insurance': '保険',
+            'nav-staking': 'ステーキング', 'nav-dao': 'DAO', 'nav-buy': '📊 NEXを購入',
+            'page-title': '取引プラットフォーム', 'page-desc': 'NEXをリアルタイムで売買・管理',
+            'swap-from': '元', 'swap-balance': '残高: 12,450 NEX',
+            'swap-to': '先', 'swap-balance2': '残高: 245.80 USDC',
+            'swap-btn': '🚀 NEX → USDC を交換',
+            'swap-rate': 'レート: 1 NEX ≈ 0.0001 USDC', 'swap-fee': '手数料: 0.3%',
+            'section1': '⚡ クイックトレード', 'section2': '🤖 自動戦略',
+            'section3': '📊 市場分析', 'section4': '🛠️ ツール',
+            'tool1': '成行注文', 'tool2': '指値注文', 'tool3': 'ストップロス',
+            'tool4': 'テイクプロフィット', 'tool5': 'OCO注文', 'tool6': 'アイスバーグ注文',
+            'tool7': 'DCA (平均化)', 'tool8': 'TWAP', 'tool9': 'グリッドトレード',
+            'tool10': 'リバランス', 'tool11': 'アービトラージ', 'tool12': 'スナイパー',
+            'tool13': '価格チャート', 'tool14': '出来高', 'tool15': 'クジラ活動',
+            'tool16': '市場ニュース', 'tool17': 'AI予測', 'tool18': '取引履歴',
+            'tool19': '計算機', 'tool20': 'コンバーター', 'tool21': 'ポートフォリオ',
+            'tool22': 'アラート', 'tool23': '履歴', 'tool24': 'エクスポート',
+            'footer-copy': '© 2026 NEXUS Protocol — Solanaでスマートに取引'
+        },
+        ko: {
+            'nav-home': '홈', 'nav-trade': '거래', 'nav-insurance': '보험',
+            'nav-staking': '스테이킹', 'nav-dao': 'DAO', 'nav-buy': '📊 NEX 구매',
+            'page-title': '거래 플랫폼', 'page-desc': 'NEX를 실시간으로 사고 팔고 관리하세요',
+            'swap-from': '보낼', 'swap-balance': '잔액: 12,450 NEX',
+            'swap-to': '받을', 'swap-balance2': '잔액: 245.80 USDC',
+            'swap-btn': '🚀 NEX → USDC 스왑',
+            'swap-rate': '환율: 1 NEX ≈ 0.0001 USDC', 'swap-fee': '수수료: 0.3%',
+            'section1': '⚡ 퀵 트레이드', 'section2': '🤖 자동 전략',
+            'section3': '📊 시장 분석', 'section4': '🛠️ 도구',
+            'tool1': '시장가 주문', 'tool2': '지정가 주문', 'tool3': '스탑로스',
+            'tool4': '테이크프로핏', 'tool5': 'OCO 주문', 'tool6': '아이스버그 주문',
+            'tool7': 'DCA (평균화)', 'tool8': 'TWAP', 'tool9': '그리드 트레이딩',
+            'tool10': '리밸런싱', 'tool11': '차익거래', 'tool12': '스나이퍼',
+            'tool13': '가격 차트', 'tool14': '거래량', 'tool15': '고래 활동',
+            'tool16': '시장 뉴스', 'tool17': 'AI 예측', 'tool18': '거래 내역',
+            'tool19': '계산기', 'tool20': '변환기', 'tool21': '포트폴리오',
+            'tool22': '알림', 'tool23': '기록', 'tool24': '내보내기',
+            'footer-copy': '© 2026 NEXUS Protocol — Solana에서 스마트하게 거래'
+        }
+    };
+
+    let currentLang = localStorage.getItem('nexusLang') || 'ru';
+
+    function applyLanguage(lang) {
+        if (!translations[lang]) return;
+        const t = translations[lang];
+        document.documentElement.lang = lang;
+        document.querySelectorAll('[data-i18n]').forEach(el => {
+            const key = el.getAttribute('data-i18n');
+            if (t[key]) {
+                if (el.tagName === 'INPUT' || el.tagName === 'TEXTAREA') {
+                    el.placeholder = t[key];
+                } else {
+                    el.textContent = t[key];
+                }
+            }
+        });
+        document.getElementById('currentLangLabel').textContent = lang.toUpperCase();
+        document.querySelectorAll('.lang-dropdown button').forEach(btn => {
+            btn.classList.toggle('active', btn.dataset.lang === lang);
+        });
+        localStorage.setItem('nexusLang', lang);
+        currentLang = lang;
+    }
+
+    document.getElementById('langToggle').addEventListener('click', (e) => {
+        e.stopPropagation();
+        document.getElementById('langDropdown').classList.toggle('show');
+    });
+    document.addEventListener('click', () => {
+        document.getElementById('langDropdown').classList.remove('show');
+    });
+    document.querySelectorAll('.lang-dropdown button').forEach(btn => {
+        btn.addEventListener('click', (e) => {
+            e.stopPropagation();
+            applyLanguage(btn.dataset.lang);
+            document.getElementById('langDropdown').classList.remove('show');
+        });
+    });
+    applyLanguage(currentLang);
+</script>
 </body>
 </html>
