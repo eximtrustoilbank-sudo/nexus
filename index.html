@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>NEXUS — Connect. Protect. Earn.</title>
+    <title>NEXUS — Центр экосистемы</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800;900&display=swap" rel="stylesheet" />
     <style>
         /* ——— RESET ——— */
@@ -34,7 +34,7 @@
             position: fixed;
             border-radius: 50%;
             filter: blur(150px);
-            opacity: 0.15;
+            opacity: 0.12;
             pointer-events: none;
             z-index: 0;
         }
@@ -60,8 +60,8 @@
             left: 0;
             right: 0;
             z-index: 1000;
-            padding: 16px 0;
-            background: rgba(7, 9, 15, 0.85);
+            padding: 14px 0;
+            background: rgba(7, 9, 15, 0.88);
             backdrop-filter: blur(20px);
             border-bottom: 1px solid rgba(255, 255, 255, 0.04);
         }
@@ -70,12 +70,12 @@
             justify-content: space-between;
             align-items: center;
             flex-wrap: wrap;
-            gap: 16px;
+            gap: 12px;
         }
         .logo {
             display: flex;
             align-items: center;
-            font-size: 24px;
+            font-size: 22px;
             font-weight: 900;
             letter-spacing: -1px;
         }
@@ -93,29 +93,33 @@
         .nav-links {
             display: flex;
             align-items: center;
-            gap: 24px;
-            font-size: 14px;
-            font-weight: 600;
+            gap: 8px;
             flex-wrap: wrap;
+            font-size: 13px;
+            font-weight: 600;
         }
         .nav-links a {
-            color: #a0a8c4;
+            color: #b0b8d1;
+            padding: 8px 14px;
+            border-radius: 40px;
             transition: 0.2s;
         }
         .nav-links a:hover {
             color: #fff;
+            background: rgba(108, 60, 225, 0.12);
         }
-        .btn-primary {
+        .nav-links .active {
+            color: #fff;
+            background: rgba(108, 60, 225, 0.15);
+        }
+        .btn-buy {
             background: linear-gradient(135deg, #6C3CE1, #00d4ff);
-            color: #fff !important;
-            padding: 10px 28px;
-            border-radius: 60px;
+            color: #0b0e1a !important;
+            padding: 8px 22px;
+            border-radius: 40px;
             font-weight: 700;
-            border: none;
-            cursor: pointer;
-            transition: 0.2s;
         }
-        .btn-primary:hover {
+        .btn-buy:hover {
             transform: scale(1.04);
             box-shadow: 0 0 30px rgba(108, 60, 225, 0.3);
         }
@@ -124,22 +128,22 @@
         .hero {
             position: relative;
             z-index: 2;
-            padding: 140px 0 60px;
+            padding: 130px 0 50px;
             text-align: center;
         }
         .hero-logo {
-            width: 120px;
-            height: 120px;
+            width: 100px;
+            height: 100px;
             border-radius: 50%;
             margin-bottom: 20px;
-            box-shadow: 0 0 60px rgba(108, 60, 225, 0.3);
+            box-shadow: 0 0 60px rgba(108, 60, 225, 0.25);
         }
         .hero h1 {
-            font-size: clamp(3rem, 8vw, 5.5rem);
+            font-size: clamp(2.6rem, 7vw, 4.8rem);
             font-weight: 900;
             line-height: 1.05;
             letter-spacing: -2px;
-            margin-bottom: 20px;
+            margin-bottom: 16px;
         }
         .hero h1 .gradient {
             background: linear-gradient(135deg, #6C3CE1, #00d4ff);
@@ -147,24 +151,24 @@
             -webkit-text-fill-color: transparent;
         }
         .hero p {
-            font-size: 1.2rem;
+            font-size: 1.15rem;
             color: #8892b0;
             max-width: 600px;
-            margin: 0 auto 32px;
+            margin: 0 auto 28px;
         }
         .hero-buttons {
             display: flex;
             flex-wrap: wrap;
             justify-content: center;
-            gap: 16px;
+            gap: 14px;
         }
         .btn-hero {
             background: linear-gradient(135deg, #6C3CE1, #00d4ff);
             color: #0b0e1a !important;
             font-weight: 800;
-            padding: 14px 48px;
+            padding: 14px 44px;
             border-radius: 60px;
-            font-size: 1.1rem;
+            font-size: 1.05rem;
             display: inline-block;
             transition: 0.2s;
             border: none;
@@ -176,12 +180,12 @@
         }
         .btn-secondary {
             background: rgba(255, 255, 255, 0.04);
-            border: 1px solid rgba(255, 255, 255, 0.12);
+            border: 1px solid rgba(255, 255, 255, 0.1);
             color: #eef2f8 !important;
             font-weight: 600;
-            padding: 14px 36px;
+            padding: 14px 34px;
             border-radius: 60px;
-            font-size: 1.1rem;
+            font-size: 1.05rem;
             transition: 0.2s;
             display: inline-block;
         }
@@ -190,59 +194,56 @@
             border-color: #6C3CE1;
         }
 
-        /* ——— STATS ——— */
-        .stats {
+        /* ——— QUICK STATS ——— */
+        .quick-stats {
             position: relative;
             z-index: 2;
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
-            gap: 16px;
-            padding: 20px 0 40px;
+            grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+            gap: 12px;
+            padding: 10px 0 40px;
             max-width: 900px;
             margin: 0 auto;
         }
-        .stat-item {
+        .q-stat {
             text-align: center;
             background: rgba(255, 255, 255, 0.02);
             border: 1px solid rgba(255, 255, 255, 0.04);
-            padding: 16px;
-            border-radius: 16px;
-            transition: 0.2s;
+            padding: 14px 10px;
+            border-radius: 14px;
         }
-        .stat-item:hover {
-            border-color: #6C3CE1;
-        }
-        .stat-item .number {
-            font-size: 1.6rem;
+        .q-stat .num {
+            font-size: 1.4rem;
             font-weight: 800;
             background: linear-gradient(135deg, #6C3CE1, #00d4ff);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
         }
-        .stat-item .label {
-            font-size: 0.75rem;
+        .q-stat .lbl {
+            font-size: 0.65rem;
             color: #8892b0;
-            margin-top: 4px;
+            text-transform: uppercase;
+            letter-spacing: 0.3px;
         }
 
-        /* ——— ECOSYSTEM ——— */
+        /* ——— ECOSYSTEM CARDS (4 столпа) ——— */
         .ecosystem {
             position: relative;
             z-index: 2;
-            padding: 40px 0 60px;
+            padding: 30px 0 60px;
         }
         .ecosystem h2 {
             text-align: center;
-            font-size: 2.2rem;
+            font-size: 2rem;
             font-weight: 800;
-            margin-bottom: 12px;
+            margin-bottom: 8px;
         }
         .ecosystem .sub {
             text-align: center;
             color: #8892b0;
             max-width: 500px;
-            margin: 0 auto 40px;
-            font-size: 1rem;
+            margin: 0 auto 36px;
+            font-size: 0.95rem;
         }
         .eco-grid {
             display: grid;
@@ -252,34 +253,50 @@
         .eco-card {
             background: rgba(255, 255, 255, 0.02);
             border: 1px solid rgba(255, 255, 255, 0.05);
-            padding: 28px 20px;
+            padding: 28px 20px 24px;
             border-radius: 20px;
             text-align: center;
             transition: 0.25s;
+            cursor: pointer;
         }
         .eco-card:hover {
             border-color: #6C3CE1;
             transform: translateY(-6px);
-            background: rgba(108, 60, 225, 0.05);
+            background: rgba(108, 60, 225, 0.06);
         }
         .eco-card .icon {
             font-size: 2.6rem;
-            margin-bottom: 12px;
+            margin-bottom: 10px;
         }
         .eco-card h3 {
             font-size: 1.1rem;
-            margin-bottom: 6px;
+            margin-bottom: 4px;
         }
         .eco-card p {
-            font-size: 0.9rem;
+            font-size: 0.85rem;
             color: #8892b0;
+            margin-bottom: 10px;
+        }
+        .eco-card .link-btn {
+            display: inline-block;
+            font-size: 0.8rem;
+            font-weight: 700;
+            color: #00d4ff;
+            padding: 4px 16px;
+            border: 1px solid rgba(0, 212, 255, 0.2);
+            border-radius: 40px;
+            transition: 0.2s;
+        }
+        .eco-card .link-btn:hover {
+            background: rgba(0, 212, 255, 0.08);
+            border-color: #00d4ff;
         }
         .eco-card .status {
             display: inline-block;
-            margin-top: 10px;
-            font-size: 0.7rem;
+            margin-top: 8px;
+            font-size: 0.65rem;
             font-weight: 600;
-            padding: 4px 16px;
+            padding: 3px 14px;
             border-radius: 40px;
             background: rgba(20, 241, 149, 0.1);
             color: #14f195;
@@ -289,80 +306,45 @@
             color: #ffd700;
         }
 
-        /* ——— TOKENOMICS ——— */
-        .tokenomics {
+        /* ——— CONTRACT & FOOTER ——— */
+        .contract-box {
+            text-align: center;
             position: relative;
             z-index: 2;
-            padding: 40px 0 60px;
-            text-align: center;
+            padding: 10px 0 30px;
         }
-        .tokenomics h2 {
-            font-size: 2.2rem;
-            font-weight: 800;
-            margin-bottom: 32px;
-        }
-        .grid-token {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
-            gap: 14px;
-            max-width: 800px;
-            margin: 0 auto;
-        }
-        .t-item {
-            background: rgba(255, 255, 255, 0.02);
-            border: 1px solid rgba(255, 255, 255, 0.04);
-            padding: 16px;
-            border-radius: 14px;
-            transition: 0.2s;
-        }
-        .t-item:hover {
-            border-color: #6C3CE1;
-        }
-        .t-item .pct {
-            font-size: 1.8rem;
-            font-weight: 800;
-            color: #00d4ff;
-        }
-        .t-item .desc {
-            font-size: 0.75rem;
-            color: #8892b0;
-        }
-
-        /* ——— CONTRACT BOX ——— */
-        .contract-box {
+        .contract-box code {
             background: rgba(255, 255, 255, 0.03);
             border: 1px solid rgba(255, 255, 255, 0.06);
             border-radius: 60px;
-            padding: 12px 28px;
+            padding: 10px 24px;
             display: inline-block;
             font-family: monospace;
-            font-size: 0.85rem;
+            font-size: 0.8rem;
             word-break: break-all;
             max-width: 100%;
-            margin-top: 20px;
+            color: #b0b8d1;
         }
 
-        /* ——— FOOTER ——— */
         footer {
             position: relative;
             z-index: 2;
-            padding: 30px 0;
+            padding: 24px 0;
             border-top: 1px solid rgba(255, 255, 255, 0.04);
             text-align: center;
             color: #5a6488;
-            font-size: 0.8rem;
+            font-size: 0.75rem;
         }
         footer .socials a {
             color: #8892b0;
             margin: 0 14px;
-            font-size: 14px;
+            font-size: 13px;
             transition: 0.2s;
         }
         footer .socials a:hover {
             color: #fff;
         }
 
-        /* ——— RESPONSIVE ——— */
         @media (max-width: 700px) {
             .header-inner {
                 flex-direction: column;
@@ -373,13 +355,10 @@
                 justify-content: center;
             }
             .hero h1 {
-                font-size: 2.6rem;
+                font-size: 2.4rem;
             }
             .hero {
                 padding-top: 120px;
-            }
-            .stats {
-                grid-template-columns: repeat(2, 1fr);
             }
             .eco-grid {
                 grid-template-columns: 1fr 1fr;
@@ -389,8 +368,8 @@
             .eco-grid {
                 grid-template-columns: 1fr;
             }
-            .stats {
-                grid-template-columns: 1fr;
+            .quick-stats {
+                grid-template-columns: repeat(2, 1fr);
             }
         }
     </style>
@@ -405,94 +384,80 @@
 <header>
     <div class="container header-inner">
         <div class="logo">
-            <img src="https://raw.githubusercontent.com/eximtrustoilbank-sudo/nexus/refs/heads/main/nexus_logo.png" alt="NEXUS Logo">
+            <img src="https://raw.githubusercontent.com/eximtrustoilbank-sudo/nexus/refs/heads/main/nexus_logo.png" alt="NEXUS">
             <span>NEXUS</span>
         </div>
         <div class="nav-links">
-            <a href="#ecosystem">Ecosystem</a>
-            <a href="#tokenomics">Tokenomics</a>
-            <a href="https://www.geckoterminal.com/solana/pools/FKRKSVTQpCngomVftV6HRhPXAp9BJhbWoFwH1JwY1XA6" target="_blank" class="btn-primary">📊 Chart</a>
+            <a href="index.html" class="active">Главная</a>
+            <a href="trade.html">Торги</a>
+            <a href="insurance.html">Страховка</a>
+            <a href="staking.html">Стейкинг</a>
+            <a href="dao.html">DAO</a>
+            <a href="https://www.geckoterminal.com/solana/pools/FKRKSVTQpCngomVftV6HRhPXAp9BJhbWoFwH1JwY1XA6" target="_blank" class="btn-buy">📊 Купить NEX</a>
         </div>
     </div>
 </header>
 
 <!-- HERO -->
 <section class="hero container">
-    <img src="https://raw.githubusercontent.com/eximtrustoilbank-sudo/nexus/refs/heads/main/nexus_logo.png" alt="NEXUS Logo" class="hero-logo">
-    <h1>Connect. <span class="gradient">Protect.</span> Earn.</h1>
-    <p>NEXUS is the governance and utility hub for the SAFE ecosystem. Stake, vote, and earn rewards on Solana.</p>
+    <img src="https://raw.githubusercontent.com/eximtrustoilbank-sudo/nexus/refs/heads/main/nexus_logo.png" alt="NEXUS" class="hero-logo">
+    <h1>Центр экосистемы <span class="gradient">NEXUS</span></h1>
+    <p>Торгуйте, страхуйте, стейкайте и управляйте — всё в одном месте на Solana.</p>
     <div class="hero-buttons">
-        <a href="https://www.geckoterminal.com/solana/pools/FKRKSVTQpCngomVftV6HRhPXAp9BJhbWoFwH1JwY1XA6" target="_blank" class="btn-hero">🚀 Buy $NEX</a>
-        <a href="#ecosystem" class="btn-secondary">🌐 Explore Ecosystem</a>
+        <a href="https://www.geckoterminal.com/solana/pools/FKRKSVTQpCngomVftV6HRhPXAp9BJhbWoFwH1JwY1XA6" target="_blank" class="btn-hero">🚀 Купить NEX</a>
+        <a href="#ecosystem" class="btn-secondary">🌐 Исследовать</a>
     </div>
 </section>
 
-<!-- STATS -->
-<section class="container stats">
-    <div class="stat-item">
-        <div class="number">10B</div>
-        <div class="label">Total Supply</div>
-    </div>
-    <div class="stat-item">
-        <div class="number">0.5%</div>
-        <div class="label">Transfer Fee</div>
-    </div>
-    <div class="stat-item">
-        <div class="number">Solana</div>
-        <div class="label">Network</div>
-    </div>
-    <div class="stat-item">
-        <div class="number">🛡️</div>
-        <div class="label">Insurance Fund</div>
-    </div>
-</section>
+<!-- QUICK STATS -->
+<div class="container quick-stats">
+    <div class="q-stat"><div class="num">10B</div><div class="lbl">Supply</div></div>
+    <div class="q-stat"><div class="num">0.5%</div><div class="lbl">Transfer Fee</div></div>
+    <div class="q-stat"><div class="num">$847K</div><div class="lbl">Insurance Fund</div></div>
+    <div class="q-stat"><div class="num">12.8K</div><div class="lbl">Holders</div></div>
+    <div class="q-stat"><div class="num">Solana</div><div class="lbl">Network</div></div>
+</div>
 
 <!-- ECOSYSTEM -->
 <section class="container ecosystem" id="ecosystem">
-    <h2>🌐 Ecosystem</h2>
-    <p class="sub">Four pillars that make NEXUS the heart of SAFE</p>
+    <h2>🌐 Экосистема</h2>
+    <p class="sub">Четыре столпа, которые делают NEXUS сердцем SAFE</p>
     <div class="eco-grid">
         <div class="eco-card">
             <div class="icon">📊</div>
-            <h3>Trade on Meteora</h3>
-            <p>Buy and sell NEX with deep liquidity. Low slippage, Solana speed.</p>
-            <span class="status">✅ Live Now</span>
+            <h3>Торги</h3>
+            <p>Покупайте и продавайте NEX на Meteora с глубокой ликвидностью.</p>
+            <a href="trade.html" class="link-btn">Перейти →</a>
+            <div class="status">✅ Активно</div>
         </div>
         <div class="eco-card">
             <div class="icon">🛡️</div>
-            <h3>Insurance Fund</h3>
-            <p>0.5% of every transfer goes to the SAFE insurance fund. Your assets are protected.</p>
-            <span class="status">✅ Active</span>
+            <h3>Страховка</h3>
+            <p>0.5% с каждого перевода идёт в страховой фонд. Ваши активы защищены.</p>
+            <a href="insurance.html" class="link-btn">Перейти →</a>
+            <div class="status">✅ Активно</div>
         </div>
         <div class="eco-card">
             <div class="icon">⏳</div>
-            <h3>Staking & Rewards</h3>
-            <p>Lock your NEX and earn passive income. Coming soon with high APR.</p>
-            <span class="status soon">⏳ Coming Soon</span>
+            <h3>Стейкинг</h3>
+            <p>Заморозьте NEX и получайте пассивный доход с высоким APR.</p>
+            <a href="staking.html" class="link-btn">Перейти →</a>
+            <div class="status soon">⏳ Скоро</div>
         </div>
         <div class="eco-card">
             <div class="icon">🗳️</div>
-            <h3>DAO Governance</h3>
-            <p>Every NEX holder gets a vote. Propose and decide the future of the protocol.</p>
-            <span class="status soon">⏳ Coming Soon</span>
+            <h3>DAO</h3>
+            <p>Каждый держатель NEX получает голос. Управляйте будущим протокола.</p>
+            <a href="dao.html" class="link-btn">Перейти →</a>
+            <div class="status soon">⏳ Скоро</div>
         </div>
     </div>
 </section>
 
-<!-- TOKENOMICS -->
-<section class="container tokenomics" id="tokenomics">
-    <h2>🪙 Tokenomics</h2>
-    <div class="grid-token">
-        <div class="t-item"><div class="pct">30%</div><div class="desc">Liquidity</div></div>
-        <div class="t-item"><div class="pct">25%</div><div class="desc">Community</div></div>
-        <div class="t-item"><div class="pct">20%</div><div class="desc">Team (Locked)</div></div>
-        <div class="t-item"><div class="pct">15%</div><div class="desc">Ecosystem</div></div>
-        <div class="t-item"><div class="pct">10%</div><div class="desc">Insurance Fund</div></div>
-    </div>
-    <div class="contract-box">
-        📜 NEXUS: 6WBoPatSisMYCN8y6xZECu4E9VcMhqyE56vD3zrQbCts
-    </div>
-</section>
+<!-- CONTRACT ADDRESS -->
+<div class="container contract-box">
+    <code>📜 NEXUS: 6WBoPatSisMYCN8y6xZECu4E9VcMhqyE56vD3zrQbCts</code>
+</div>
 
 <!-- FOOTER -->
 <footer>
@@ -501,6 +466,7 @@
             <a href="#">🐦 Twitter</a>
             <a href="#">💬 Telegram</a>
             <a href="https://www.geckoterminal.com/solana/pools/FKRKSVTQpCngomVftV6HRhPXAp9BJhbWoFwH1JwY1XA6" target="_blank">📊 GeckoTerminal</a>
+            <a href="#">📈 CoinGecko</a>
         </div>
         <p>© 2026 NEXUS Protocol. Built on Solana.</p>
     </div>
