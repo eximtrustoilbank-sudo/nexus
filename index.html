@@ -1,0 +1,504 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>NEXUS — Connect. Protect. Earn.</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800;900&display=swap" rel="stylesheet" />
+    <style>
+        /* ——— RESET ——— */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Inter', sans-serif;
+            background: #07090f;
+            color: #eef2f8;
+            overflow-x: hidden;
+            line-height: 1.6;
+        }
+        a {
+            color: #00e5ff;
+            text-decoration: none;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        /* ——— GLOW ——— */
+        .glow {
+            position: fixed;
+            border-radius: 50%;
+            filter: blur(150px);
+            opacity: 0.15;
+            pointer-events: none;
+            z-index: 0;
+        }
+        .glow-1 {
+            width: 600px;
+            height: 600px;
+            background: #6C3CE1;
+            top: -200px;
+            right: -100px;
+        }
+        .glow-2 {
+            width: 600px;
+            height: 600px;
+            background: #00d4ff;
+            bottom: -200px;
+            left: -100px;
+        }
+
+        /* ——— HEADER ——— */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            padding: 16px 0;
+            background: rgba(7, 9, 15, 0.85);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+        }
+        .header-inner {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 16px;
+        }
+        .logo {
+            font-size: 24px;
+            font-weight: 900;
+            letter-spacing: -1px;
+        }
+        .logo span {
+            background: linear-gradient(135deg, #6C3CE1, #00d4ff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 24px;
+            font-size: 14px;
+            font-weight: 600;
+            flex-wrap: wrap;
+        }
+        .nav-links a {
+            color: #a0a8c4;
+            transition: 0.2s;
+        }
+        .nav-links a:hover {
+            color: #fff;
+        }
+        .btn-primary {
+            background: linear-gradient(135deg, #6C3CE1, #00d4ff);
+            color: #fff !important;
+            padding: 10px 28px;
+            border-radius: 60px;
+            font-weight: 700;
+            border: none;
+            cursor: pointer;
+            transition: 0.2s;
+        }
+        .btn-primary:hover {
+            transform: scale(1.04);
+            box-shadow: 0 0 30px rgba(108, 60, 225, 0.3);
+        }
+
+        /* ——— HERO ——— */
+        .hero {
+            position: relative;
+            z-index: 2;
+            padding: 140px 0 60px;
+            text-align: center;
+        }
+        .hero h1 {
+            font-size: clamp(3rem, 8vw, 5.5rem);
+            font-weight: 900;
+            line-height: 1.05;
+            letter-spacing: -2px;
+            margin-bottom: 20px;
+        }
+        .hero h1 .gradient {
+            background: linear-gradient(135deg, #6C3CE1, #00d4ff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .hero p {
+            font-size: 1.2rem;
+            color: #8892b0;
+            max-width: 600px;
+            margin: 0 auto 32px;
+        }
+        .hero-buttons {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 16px;
+        }
+        .btn-hero {
+            background: linear-gradient(135deg, #6C3CE1, #00d4ff);
+            color: #0b0e1a !important;
+            font-weight: 800;
+            padding: 14px 48px;
+            border-radius: 60px;
+            font-size: 1.1rem;
+            display: inline-block;
+            transition: 0.2s;
+            border: none;
+            cursor: pointer;
+        }
+        .btn-hero:hover {
+            transform: scale(1.03);
+            box-shadow: 0 0 40px rgba(108, 60, 225, 0.3);
+        }
+        .btn-secondary {
+            background: rgba(255, 255, 255, 0.04);
+            border: 1px solid rgba(255, 255, 255, 0.12);
+            color: #eef2f8 !important;
+            font-weight: 600;
+            padding: 14px 36px;
+            border-radius: 60px;
+            font-size: 1.1rem;
+            transition: 0.2s;
+            display: inline-block;
+        }
+        .btn-secondary:hover {
+            background: rgba(255, 255, 255, 0.08);
+            border-color: #6C3CE1;
+        }
+
+        /* ——— STATS ——— */
+        .stats {
+            position: relative;
+            z-index: 2;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+            gap: 16px;
+            padding: 20px 0 40px;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+        .stat-item {
+            text-align: center;
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid rgba(255, 255, 255, 0.04);
+            padding: 16px;
+            border-radius: 16px;
+            transition: 0.2s;
+        }
+        .stat-item:hover {
+            border-color: #6C3CE1;
+        }
+        .stat-item .number {
+            font-size: 1.6rem;
+            font-weight: 800;
+            background: linear-gradient(135deg, #6C3CE1, #00d4ff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .stat-item .label {
+            font-size: 0.75rem;
+            color: #8892b0;
+            margin-top: 4px;
+        }
+
+        /* ——— FEATURES ——— */
+        .features {
+            position: relative;
+            z-index: 2;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 20px;
+            padding: 40px 0 60px;
+        }
+        .feature-card {
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            padding: 28px 20px;
+            border-radius: 20px;
+            text-align: center;
+            transition: 0.25s;
+        }
+        .feature-card:hover {
+            border-color: #6C3CE1;
+            transform: translateY(-6px);
+            background: rgba(108, 60, 225, 0.05);
+        }
+        .feature-card .icon {
+            font-size: 2.6rem;
+            margin-bottom: 12px;
+        }
+        .feature-card h3 {
+            font-size: 1.1rem;
+            margin-bottom: 6px;
+        }
+        .feature-card p {
+            font-size: 0.9rem;
+            color: #8892b0;
+        }
+
+        /* ——— TOKENOMICS ——— */
+        .tokenomics {
+            position: relative;
+            z-index: 2;
+            padding: 40px 0 60px;
+            text-align: center;
+        }
+        .tokenomics h2 {
+            font-size: 2.2rem;
+            font-weight: 800;
+            margin-bottom: 32px;
+        }
+        .grid-token {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+            gap: 14px;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        .t-item {
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid rgba(255, 255, 255, 0.04);
+            padding: 16px;
+            border-radius: 14px;
+            transition: 0.2s;
+        }
+        .t-item:hover {
+            border-color: #6C3CE1;
+        }
+        .t-item .pct {
+            font-size: 1.8rem;
+            font-weight: 800;
+            color: #00d4ff;
+        }
+        .t-item .desc {
+            font-size: 0.75rem;
+            color: #8892b0;
+        }
+
+        /* ——— ROADMAP ——— */
+        .roadmap {
+            padding: 20px 0 60px;
+            text-align: center;
+            position: relative;
+            z-index: 2;
+        }
+        .roadmap h2 {
+            font-size: 2rem;
+            font-weight: 800;
+            margin-bottom: 16px;
+        }
+        .roadmap-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 16px;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+        .roadmap-item {
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid rgba(255, 255, 255, 0.04);
+            padding: 20px;
+            border-radius: 16px;
+            transition: 0.2s;
+        }
+        .roadmap-item:hover {
+            border-color: #00d4ff;
+        }
+        .roadmap-item strong {
+            color: #00d4ff;
+            font-size: 1.1rem;
+        }
+
+        /* ——— CONTRACT BOX ——— */
+        .contract-box {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.06);
+            border-radius: 60px;
+            padding: 12px 28px;
+            display: inline-block;
+            font-family: monospace;
+            font-size: 0.85rem;
+            word-break: break-all;
+            max-width: 100%;
+            margin-top: 20px;
+        }
+
+        /* ——— FOOTER ——— */
+        footer {
+            position: relative;
+            z-index: 2;
+            padding: 30px 0;
+            border-top: 1px solid rgba(255, 255, 255, 0.04);
+            text-align: center;
+            color: #5a6488;
+            font-size: 0.8rem;
+        }
+        footer .socials a {
+            color: #8892b0;
+            margin: 0 14px;
+            font-size: 14px;
+            transition: 0.2s;
+        }
+        footer .socials a:hover {
+            color: #fff;
+        }
+
+        /* ——— RESPONSIVE ——— */
+        @media (max-width: 700px) {
+            .header-inner {
+                flex-direction: column;
+                align-items: stretch;
+                text-align: center;
+            }
+            .nav-links {
+                justify-content: center;
+            }
+            .hero h1 {
+                font-size: 2.6rem;
+            }
+            .hero {
+                padding-top: 120px;
+            }
+            .stats {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            .features {
+                grid-template-columns: 1fr 1fr;
+            }
+            .roadmap-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+        @media (max-width: 480px) {
+            .features {
+                grid-template-columns: 1fr;
+            }
+            .stats {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<!-- GLOW -->
+<div class="glow glow-1"></div>
+<div class="glow glow-2"></div>
+
+<!-- HEADER -->
+<header>
+    <div class="container header-inner">
+        <div class="logo"><span>NEXUS</span></div>
+        <div class="nav-links">
+            <a href="#features">Ecosystem</a>
+            <a href="#tokenomics">Tokenomics</a>
+            <a href="#roadmap">Roadmap</a>
+            <a href="#" class="btn-primary">🌐 Launch App</a>
+        </div>
+    </div>
+</header>
+
+<!-- HERO -->
+<section class="hero container">
+    <h1>Connect. <span class="gradient">Protect.</span> Earn.</h1>
+    <p>NEXUS is the governance hub for the SAFE ecosystem. Stake, vote, and earn rewards on Solana.</p>
+    <div class="hero-buttons">
+        <a href="#" class="btn-hero">🚀 Buy $NEX</a>
+        <a href="#tokenomics" class="btn-secondary">📊 Tokenomics</a>
+    </div>
+</section>
+
+<!-- STATS -->
+<section class="container stats">
+    <div class="stat-item">
+        <div class="number">10B</div>
+        <div class="label">Total Supply</div>
+    </div>
+    <div class="stat-item">
+        <div class="number">0.5%</div>
+        <div class="label">Transfer Fee</div>
+    </div>
+    <div class="stat-item">
+        <div class="number">Solana</div>
+        <div class="label">Network</div>
+    </div>
+    <div class="stat-item">
+        <div class="number">🛡️</div>
+        <div class="label">Insurance Fund</div>
+    </div>
+</section>
+
+<!-- FEATURES -->
+<section class="container features" id="features">
+    <div class="feature-card">
+        <div class="icon">⚡</div>
+        <h3>Solana Speed</h3>
+        <p>Transactions in under 0.5 seconds with near-zero fees.</p>
+    </div>
+    <div class="feature-card">
+        <div class="icon">🛡️</div>
+        <h3>Insurance Backed</h3>
+        <p>Protected by the SAFE insurance fund — 0.5% fee goes to security.</p>
+    </div>
+    <div class="feature-card">
+        <div class="icon">🗳️</div>
+        <h3>DAO Governance</h3>
+        <p>Every NEX holder gets a vote. Shape the future of the ecosystem.</p>
+    </div>
+    <div class="feature-card">
+        <div class="icon">💧</div>
+        <h3>Liquid Staking</h3>
+        <p>Stake NEX and earn passive income while staying liquid.</p>
+    </div>
+</section>
+
+<!-- TOKENOMICS -->
+<section class="container tokenomics" id="tokenomics">
+    <h2>🪙 Tokenomics</h2>
+    <div class="grid-token">
+        <div class="t-item"><div class="pct">30%</div><div class="desc">Liquidity</div></div>
+        <div class="t-item"><div class="pct">25%</div><div class="desc">Community</div></div>
+        <div class="t-item"><div class="pct">20%</div><div class="desc">Team (Locked)</div></div>
+        <div class="t-item"><div class="pct">15%</div><div class="desc">Ecosystem</div></div>
+        <div class="t-item"><div class="pct">10%</div><div class="desc">Insurance Fund</div></div>
+    </div>
+    <div class="contract-box">
+        📜 NEXUS Contract: 6WBoPatSisMYCN8y6xZECu4E9VcMhqyE56vD3zrQbCts
+    </div>
+</section>
+
+<!-- ROADMAP -->
+<section class="container roadmap" id="roadmap">
+    <h2>🗺️ Roadmap</h2>
+    <div class="roadmap-grid">
+        <div class="roadmap-item"><strong>Phase 1</strong><br />Launch NEX &amp; Liquidity</div>
+        <div class="roadmap-item"><strong>Phase 2</strong><br />Staking &amp; Rewards</div>
+        <div class="roadmap-item"><strong>Phase 3</strong><br />DAO Governance Live</div>
+        <div class="roadmap-item"><strong>Phase 4</strong><br />Cross-Chain Bridges</div>
+    </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+    <div class="container">
+        <div class="socials">
+            <a href="#">🐦 Twitter</a>
+            <a href="#">💬 Telegram</a>
+            <a href="#">📊 DexScreener</a>
+            <a href="#">📈 CoinGecko</a>
+        </div>
+        <p>© 2026 NEXUS Protocol. Built on Solana.</p>
+    </div>
+</footer>
+
+</body>
+</html>
