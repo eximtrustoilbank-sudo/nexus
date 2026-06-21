@@ -1,17 +1,13 @@
 <!DOCTYPE html>
-<html lang="ru">
+<html lang="en">
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>NEXUS — Центр экосистемы</title>
+    <title>NEXUS — Connect. Protect. Earn.</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800;900&display=swap" rel="stylesheet" />
     <style>
-        /* ——— RESET ——— */
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+        /* ——— RESET & BASE ——— */
+        * { margin: 0; padding: 0; box-sizing: border-box; }
         body {
             font-family: 'Inter', sans-serif;
             background: #07090f;
@@ -19,381 +15,128 @@
             overflow-x: hidden;
             line-height: 1.6;
         }
-        a {
-            color: #00e5ff;
-            text-decoration: none;
-        }
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 24px;
-        }
+        a { color: #00e5ff; text-decoration: none; }
+        .container { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
 
         /* ——— GLOW ——— */
-        .glow {
-            position: fixed;
-            border-radius: 50%;
-            filter: blur(150px);
-            opacity: 0.12;
-            pointer-events: none;
-            z-index: 0;
-        }
-        .glow-1 {
-            width: 600px;
-            height: 600px;
-            background: #6C3CE1;
-            top: -200px;
-            right: -100px;
-        }
-        .glow-2 {
-            width: 600px;
-            height: 600px;
-            background: #00d4ff;
-            bottom: -200px;
-            left: -100px;
-        }
+        .glow { position: fixed; border-radius: 50%; filter: blur(150px); opacity: 0.12; pointer-events: none; z-index: 0; }
+        .glow-1 { width: 600px; height: 600px; background: #6C3CE1; top: -200px; right: -100px; }
+        .glow-2 { width: 600px; height: 600px; background: #00d4ff; bottom: -200px; left: -100px; }
 
         /* ——— HEADER ——— */
         header {
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            z-index: 1000;
-            padding: 14px 0;
-            background: rgba(7, 9, 15, 0.88);
-            backdrop-filter: blur(20px);
-            border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+            position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
+            padding: 14px 0; background: rgba(7,9,15,0.88); backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(255,255,255,0.04);
         }
-        .header-inner {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            flex-wrap: wrap;
-            gap: 12px;
-        }
-        .logo {
-            display: flex;
-            align-items: center;
-            font-size: 22px;
-            font-weight: 900;
-            letter-spacing: -1px;
-        }
-        .logo img {
-            height: 32px;
-            width: auto;
-            margin-right: 10px;
-            border-radius: 8px;
-        }
-        .logo span {
-            background: linear-gradient(135deg, #6C3CE1, #00d4ff);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-        .nav-links {
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            flex-wrap: wrap;
-            font-size: 13px;
-            font-weight: 600;
-        }
-        .nav-links a {
-            color: #b0b8d1;
-            padding: 8px 14px;
-            border-radius: 40px;
-            transition: 0.2s;
-        }
-        .nav-links a:hover {
-            color: #fff;
-            background: rgba(108, 60, 225, 0.12);
-        }
-        .nav-links .active {
-            color: #fff;
-            background: rgba(108, 60, 225, 0.15);
-        }
-        .btn-buy {
-            background: linear-gradient(135deg, #6C3CE1, #00d4ff);
-            color: #0b0e1a !important;
-            padding: 8px 22px;
-            border-radius: 40px;
-            font-weight: 700;
-        }
-        .btn-buy:hover {
-            transform: scale(1.04);
-            box-shadow: 0 0 30px rgba(108, 60, 225, 0.3);
-        }
+        .header-inner { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px; }
+        .logo { display: flex; align-items: center; font-size: 22px; font-weight: 900; letter-spacing: -1px; }
+        .logo img { height: 32px; width: auto; margin-right: 10px; border-radius: 8px; }
+        .logo span { background: linear-gradient(135deg, #6C3CE1, #00d4ff); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        .nav-links { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; font-size: 13px; font-weight: 600; }
+        .nav-links a { color: #b0b8d1; padding: 8px 14px; border-radius: 40px; transition: 0.2s; }
+        .nav-links a:hover { color: #fff; background: rgba(108,60,225,0.12); }
+        .nav-links .active { color: #fff; background: rgba(108,60,225,0.15); }
+        .btn-buy { background: linear-gradient(135deg, #6C3CE1, #00d4ff); color: #0b0e1a !important; padding: 8px 22px; border-radius: 40px; font-weight: 700; }
+        .btn-buy:hover { transform: scale(1.04); box-shadow: 0 0 30px rgba(108,60,225,0.3); }
+
+        /* ——— LANGUAGE SWITCHER ——— */
+        .lang-switcher { position: relative; display: inline-block; margin-left: 8px; }
+        .lang-btn { background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.08); color: #eef2f8; padding: 6px 14px; border-radius: 40px; font-size: 13px; cursor: pointer; font-weight: 600; transition: 0.2s; display: flex; align-items: center; gap: 4px; }
+        .lang-btn:hover { background: rgba(108,60,225,0.15); border-color: #6C3CE1; }
+        .lang-dropdown { position: absolute; top: 120%; right: 0; background: rgba(7,9,15,0.97); backdrop-filter: blur(20px); border: 1px solid rgba(255,255,255,0.06); border-radius: 16px; padding: 8px 0; min-width: 140px; display: none; z-index: 999; box-shadow: 0 20px 60px rgba(0,0,0,0.6); }
+        .lang-dropdown.show { display: block; }
+        .lang-dropdown button { background: none; border: none; color: #b0b8d1; padding: 8px 20px; width: 100%; text-align: left; font-size: 13px; font-weight: 500; cursor: pointer; transition: 0.1s; font-family: inherit; }
+        .lang-dropdown button:hover { background: rgba(108,60,225,0.08); color: #fff; }
+        .lang-dropdown button.active { color: #00d4ff; font-weight: 700; }
 
         /* ——— HERO ——— */
-        .hero {
-            position: relative;
-            z-index: 2;
-            padding: 130px 0 50px;
-            text-align: center;
-        }
-        .hero-logo {
-            width: 100px;
-            height: 100px;
-            border-radius: 50%;
-            margin-bottom: 20px;
-            box-shadow: 0 0 60px rgba(108, 60, 225, 0.25);
-        }
-        .hero h1 {
-            font-size: clamp(2.6rem, 7vw, 4.8rem);
-            font-weight: 900;
-            line-height: 1.05;
-            letter-spacing: -2px;
-            margin-bottom: 16px;
-        }
-        .hero h1 .gradient {
-            background: linear-gradient(135deg, #6C3CE1, #00d4ff);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-        .hero p {
-            font-size: 1.15rem;
-            color: #8892b0;
-            max-width: 600px;
-            margin: 0 auto 28px;
-        }
-        .hero-buttons {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            gap: 14px;
-        }
-        .btn-hero {
-            background: linear-gradient(135deg, #6C3CE1, #00d4ff);
-            color: #0b0e1a !important;
-            font-weight: 800;
-            padding: 14px 44px;
-            border-radius: 60px;
-            font-size: 1.05rem;
-            display: inline-block;
-            transition: 0.2s;
-            border: none;
-            cursor: pointer;
-        }
-        .btn-hero:hover {
-            transform: scale(1.03);
-            box-shadow: 0 0 40px rgba(108, 60, 225, 0.3);
-        }
-        .btn-secondary {
-            background: rgba(255, 255, 255, 0.04);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            color: #eef2f8 !important;
-            font-weight: 600;
-            padding: 14px 34px;
-            border-radius: 60px;
-            font-size: 1.05rem;
-            transition: 0.2s;
-            display: inline-block;
-        }
-        .btn-secondary:hover {
-            background: rgba(255, 255, 255, 0.08);
-            border-color: #6C3CE1;
-        }
+        .hero { position: relative; z-index: 2; padding: 130px 0 50px; text-align: center; }
+        .hero-logo { width: 100px; height: 100px; border-radius: 50%; margin-bottom: 20px; box-shadow: 0 0 60px rgba(108,60,225,0.25); }
+        .hero h1 { font-size: clamp(2.6rem, 7vw, 4.8rem); font-weight: 900; line-height: 1.05; letter-spacing: -2px; margin-bottom: 16px; }
+        .hero h1 .gradient { background: linear-gradient(135deg, #6C3CE1, #00d4ff); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        .hero p { font-size: 1.15rem; color: #8892b0; max-width: 600px; margin: 0 auto 28px; }
+        .hero-buttons { display: flex; flex-wrap: wrap; justify-content: center; gap: 14px; }
+        .btn-hero { background: linear-gradient(135deg, #6C3CE1, #00d4ff); color: #0b0e1a !important; font-weight: 800; padding: 14px 44px; border-radius: 60px; font-size: 1.05rem; display: inline-block; transition: 0.2s; border: none; cursor: pointer; }
+        .btn-hero:hover { transform: scale(1.03); box-shadow: 0 0 40px rgba(108,60,225,0.3); }
+        .btn-secondary { background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.1); color: #eef2f8 !important; font-weight: 600; padding: 14px 34px; border-radius: 60px; font-size: 1.05rem; transition: 0.2s; display: inline-block; }
+        .btn-secondary:hover { background: rgba(255,255,255,0.08); border-color: #6C3CE1; }
 
         /* ——— QUICK STATS ——— */
-        .quick-stats {
-            position: relative;
-            z-index: 2;
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
-            gap: 12px;
-            padding: 10px 0 40px;
-            max-width: 900px;
-            margin: 0 auto;
-        }
-        .q-stat {
-            text-align: center;
-            background: rgba(255, 255, 255, 0.02);
-            border: 1px solid rgba(255, 255, 255, 0.04);
-            padding: 14px 10px;
-            border-radius: 14px;
-        }
-        .q-stat .num {
-            font-size: 1.4rem;
-            font-weight: 800;
-            background: linear-gradient(135deg, #6C3CE1, #00d4ff);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-        .q-stat .lbl {
-            font-size: 0.65rem;
-            color: #8892b0;
-            text-transform: uppercase;
-            letter-spacing: 0.3px;
-        }
+        .quick-stats { position: relative; z-index: 2; display: grid; grid-template-columns: repeat(auto-fit, minmax(120px,1fr)); gap: 12px; padding: 10px 0 40px; max-width: 900px; margin: 0 auto; }
+        .q-stat { text-align: center; background: rgba(255,255,255,0.02); border: 1px solid rgba(255,255,255,0.04); padding: 14px 10px; border-radius: 14px; }
+        .q-stat .num { font-size: 1.4rem; font-weight: 800; background: linear-gradient(135deg, #6C3CE1, #00d4ff); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        .q-stat .lbl { font-size: 0.65rem; color: #8892b0; text-transform: uppercase; letter-spacing: 0.3px; }
 
-        /* ——— ECOSYSTEM CARDS (4 столпа) ——— */
-        .ecosystem {
-            position: relative;
-            z-index: 2;
-            padding: 30px 0 60px;
-        }
-        .ecosystem h2 {
-            text-align: center;
-            font-size: 2rem;
-            font-weight: 800;
-            margin-bottom: 8px;
-        }
-        .ecosystem .sub {
-            text-align: center;
-            color: #8892b0;
-            max-width: 500px;
-            margin: 0 auto 36px;
-            font-size: 0.95rem;
-        }
-        .eco-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-            gap: 20px;
-        }
-        .eco-card {
-            background: rgba(255, 255, 255, 0.02);
-            border: 1px solid rgba(255, 255, 255, 0.05);
-            padding: 28px 20px 24px;
-            border-radius: 20px;
-            text-align: center;
-            transition: 0.25s;
-            cursor: pointer;
-        }
-        .eco-card:hover {
-            border-color: #6C3CE1;
-            transform: translateY(-6px);
-            background: rgba(108, 60, 225, 0.06);
-        }
-        .eco-card .icon {
-            font-size: 2.6rem;
-            margin-bottom: 10px;
-        }
-        .eco-card h3 {
-            font-size: 1.1rem;
-            margin-bottom: 4px;
-        }
-        .eco-card p {
-            font-size: 0.85rem;
-            color: #8892b0;
-            margin-bottom: 10px;
-        }
-        .eco-card .link-btn {
-            display: inline-block;
-            font-size: 0.8rem;
-            font-weight: 700;
-            color: #00d4ff;
-            padding: 4px 16px;
-            border: 1px solid rgba(0, 212, 255, 0.2);
-            border-radius: 40px;
-            transition: 0.2s;
-        }
-        .eco-card .link-btn:hover {
-            background: rgba(0, 212, 255, 0.08);
-            border-color: #00d4ff;
-        }
-        .eco-card .status {
-            display: inline-block;
-            margin-top: 8px;
-            font-size: 0.65rem;
-            font-weight: 600;
-            padding: 3px 14px;
-            border-radius: 40px;
-            background: rgba(20, 241, 149, 0.1);
-            color: #14f195;
-        }
-        .eco-card .status.soon {
-            background: rgba(255, 215, 0, 0.1);
-            color: #ffd700;
-        }
+        /* ——— ECOSYSTEM ——— */
+        .ecosystem { position: relative; z-index: 2; padding: 30px 0 60px; }
+        .ecosystem h2 { text-align: center; font-size: 2rem; font-weight: 800; margin-bottom: 8px; }
+        .ecosystem .sub { text-align: center; color: #8892b0; max-width: 500px; margin: 0 auto 36px; font-size: 0.95rem; }
+        .eco-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px,1fr)); gap: 20px; }
+        .eco-card { background: rgba(255,255,255,0.02); border: 1px solid rgba(255,255,255,0.05); padding: 28px 20px 24px; border-radius: 20px; text-align: center; transition: 0.25s; cursor: pointer; }
+        .eco-card:hover { border-color: #6C3CE1; transform: translateY(-6px); background: rgba(108,60,225,0.06); }
+        .eco-card .icon { font-size: 2.6rem; margin-bottom: 10px; }
+        .eco-card h3 { font-size: 1.1rem; margin-bottom: 4px; }
+        .eco-card p { font-size: 0.85rem; color: #8892b0; margin-bottom: 10px; }
+        .eco-card .link-btn { display: inline-block; font-size: 0.8rem; font-weight: 700; color: #00d4ff; padding: 4px 16px; border: 1px solid rgba(0,212,255,0.2); border-radius: 40px; transition: 0.2s; }
+        .eco-card .link-btn:hover { background: rgba(0,212,255,0.08); border-color: #00d4ff; }
+        .eco-card .status { display: inline-block; margin-top: 8px; font-size: 0.65rem; font-weight: 600; padding: 3px 14px; border-radius: 40px; background: rgba(20,241,149,0.1); color: #14f195; }
+        .eco-card .status.soon { background: rgba(255,215,0,0.1); color: #ffd700; }
 
         /* ——— CONTRACT & FOOTER ——— */
-        .contract-box {
-            text-align: center;
-            position: relative;
-            z-index: 2;
-            padding: 10px 0 30px;
-        }
-        .contract-box code {
-            background: rgba(255, 255, 255, 0.03);
-            border: 1px solid rgba(255, 255, 255, 0.06);
-            border-radius: 60px;
-            padding: 10px 24px;
-            display: inline-block;
-            font-family: monospace;
-            font-size: 0.8rem;
-            word-break: break-all;
-            max-width: 100%;
-            color: #b0b8d1;
-        }
-
-        footer {
-            position: relative;
-            z-index: 2;
-            padding: 24px 0;
-            border-top: 1px solid rgba(255, 255, 255, 0.04);
-            text-align: center;
-            color: #5a6488;
-            font-size: 0.75rem;
-        }
-        footer .socials a {
-            color: #8892b0;
-            margin: 0 14px;
-            font-size: 13px;
-            transition: 0.2s;
-        }
-        footer .socials a:hover {
-            color: #fff;
-        }
+        .contract-box { text-align: center; position: relative; z-index: 2; padding: 10px 0 30px; }
+        .contract-box code { background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.06); border-radius: 60px; padding: 10px 24px; display: inline-block; font-family: monospace; font-size: 0.8rem; word-break: break-all; max-width: 100%; color: #b0b8d1; }
+        footer { position: relative; z-index: 2; padding: 24px 0; border-top: 1px solid rgba(255,255,255,0.04); text-align: center; color: #5a6488; font-size: 0.75rem; }
+        footer .socials a { color: #8892b0; margin: 0 14px; font-size: 13px; transition: 0.2s; }
+        footer .socials a:hover { color: #fff; }
 
         @media (max-width: 700px) {
-            .header-inner {
-                flex-direction: column;
-                align-items: stretch;
-                text-align: center;
-            }
-            .nav-links {
-                justify-content: center;
-            }
-            .hero h1 {
-                font-size: 2.4rem;
-            }
-            .hero {
-                padding-top: 120px;
-            }
-            .eco-grid {
-                grid-template-columns: 1fr 1fr;
-            }
+            .header-inner { flex-direction: column; align-items: stretch; text-align: center; }
+            .nav-links { justify-content: center; }
+            .lang-switcher { margin: 6px auto 0; }
+            .hero h1 { font-size: 2.4rem; }
+            .hero { padding-top: 120px; }
+            .eco-grid { grid-template-columns: 1fr 1fr; }
         }
         @media (max-width: 480px) {
-            .eco-grid {
-                grid-template-columns: 1fr;
-            }
-            .quick-stats {
-                grid-template-columns: repeat(2, 1fr);
-            }
+            .eco-grid { grid-template-columns: 1fr; }
+            .quick-stats { grid-template-columns: repeat(2,1fr); }
         }
     </style>
 </head>
 <body>
 
-<!-- GLOW -->
 <div class="glow glow-1"></div>
 <div class="glow glow-2"></div>
 
 <!-- HEADER -->
 <header>
     <div class="container header-inner">
-        <div class="logo">
+        <a href="index.html" class="logo">
             <img src="https://raw.githubusercontent.com/eximtrustoilbank-sudo/nexus/refs/heads/main/nexus_logo.png" alt="NEXUS">
             <span>NEXUS</span>
-        </div>
+        </a>
         <div class="nav-links">
-            <a href="index.html" class="active">Главная</a>
-            <a href="trade.html">Торги</a>
-            <a href="insurance.html">Страховка</a>
-            <a href="staking.html">Стейкинг</a>
-            <a href="dao.html">DAO</a>
-            <a href="https://www.geckoterminal.com/solana/pools/FKRKSVTQpCngomVftV6HRhPXAp9BJhbWoFwH1JwY1XA6" target="_blank" class="btn-buy">📊 Купить NEX</a>
+            <a href="index.html" class="active" data-i18n="nav-home">Home</a>
+            <a href="trade.html" data-i18n="nav-trade">Trade</a>
+            <a href="insurance.html" data-i18n="nav-insurance">Insurance</a>
+            <a href="staking.html" data-i18n="nav-staking">Staking</a>
+            <a href="dao.html" data-i18n="nav-dao">DAO</a>
+            <a href="https://www.geckoterminal.com/solana/pools/FKRKSVTQpCngomVftV6HRhPXAp9BJhbWoFwH1JwY1XA6" target="_blank" class="btn-buy" data-i18n="nav-buy">📊 Buy NEX</a>
+            <!-- Language Switcher -->
+            <div class="lang-switcher">
+                <button class="lang-btn" id="langToggle">🌐 <span id="currentLangLabel">EN</span></button>
+                <div class="lang-dropdown" id="langDropdown">
+                    <button data-lang="en" class="active">🇬🇧 English</button>
+                    <button data-lang="ru">🇷🇺 Русский</button>
+                    <button data-lang="es">🇪🇸 Español</button>
+                    <button data-lang="fr">🇫🇷 Français</button>
+                    <button data-lang="de">🇩🇪 Deutsch</button>
+                    <button data-lang="zh">🇨🇳 中文</button>
+                    <button data-lang="ja">🇯🇵 日本語</button>
+                    <button data-lang="ko">🇰🇷 한국어</button>
+                </div>
+            </div>
         </div>
     </div>
 </header>
@@ -401,55 +144,55 @@
 <!-- HERO -->
 <section class="hero container">
     <img src="https://raw.githubusercontent.com/eximtrustoilbank-sudo/nexus/refs/heads/main/nexus_logo.png" alt="NEXUS" class="hero-logo">
-    <h1>Центр экосистемы <span class="gradient">NEXUS</span></h1>
-    <p>Торгуйте, страхуйте, стейкайте и управляйте — всё в одном месте на Solana.</p>
+    <h1><span data-i18n="hero-line1">Connect.</span> <span class="gradient" data-i18n="hero-line2">Protect.</span> <span data-i18n="hero-line3">Earn.</span></h1>
+    <p data-i18n="hero-desc">NEXUS is the governance and utility hub for the SAFE ecosystem. Trade, insure, stake, and govern — all in one place on Solana.</p>
     <div class="hero-buttons">
-        <a href="https://www.geckoterminal.com/solana/pools/FKRKSVTQpCngomVftV6HRhPXAp9BJhbWoFwH1JwY1XA6" target="_blank" class="btn-hero">🚀 Купить NEX</a>
-        <a href="#ecosystem" class="btn-secondary">🌐 Исследовать</a>
+        <a href="https://www.geckoterminal.com/solana/pools/FKRKSVTQpCngomVftV6HRhPXAp9BJhbWoFwH1JwY1XA6" target="_blank" class="btn-hero" data-i18n="hero-buy">🚀 Buy NEX</a>
+        <a href="#ecosystem" class="btn-secondary" data-i18n="hero-explore">🌐 Explore</a>
     </div>
 </section>
 
 <!-- QUICK STATS -->
 <div class="container quick-stats">
-    <div class="q-stat"><div class="num">10B</div><div class="lbl">Supply</div></div>
-    <div class="q-stat"><div class="num">0.5%</div><div class="lbl">Transfer Fee</div></div>
-    <div class="q-stat"><div class="num">$847K</div><div class="lbl">Insurance Fund</div></div>
-    <div class="q-stat"><div class="num">12.8K</div><div class="lbl">Holders</div></div>
-    <div class="q-stat"><div class="num">Solana</div><div class="lbl">Network</div></div>
+    <div class="q-stat"><div class="num">10B</div><div class="lbl" data-i18n="stat-supply">Supply</div></div>
+    <div class="q-stat"><div class="num">0.5%</div><div class="lbl" data-i18n="stat-fee">Transfer Fee</div></div>
+    <div class="q-stat"><div class="num">$847K</div><div class="lbl" data-i18n="stat-fund">Insurance Fund</div></div>
+    <div class="q-stat"><div class="num">12.8K</div><div class="lbl" data-i18n="stat-holders">Holders</div></div>
+    <div class="q-stat"><div class="num">Solana</div><div class="lbl" data-i18n="stat-network">Network</div></div>
 </div>
 
 <!-- ECOSYSTEM -->
 <section class="container ecosystem" id="ecosystem">
-    <h2>🌐 Экосистема</h2>
-    <p class="sub">Четыре столпа, которые делают NEXUS сердцем SAFE</p>
+    <h2 data-i18n="eco-title">🌐 Ecosystem</h2>
+    <p class="sub" data-i18n="eco-sub">Four pillars that make NEXUS the heart of SAFE</p>
     <div class="eco-grid">
         <div class="eco-card">
             <div class="icon">📊</div>
-            <h3>Торги</h3>
-            <p>Покупайте и продавайте NEX на Meteora с глубокой ликвидностью.</p>
-            <a href="trade.html" class="link-btn">Перейти →</a>
-            <div class="status">✅ Активно</div>
+            <h3 data-i18n="eco-trade-title">Trade</h3>
+            <p data-i18n="eco-trade-desc">Buy and sell NEX on Meteora with deep liquidity. Low slippage, Solana speed.</p>
+            <a href="trade.html" class="link-btn" data-i18n="eco-trade-btn">Go →</a>
+            <div class="status" data-i18n="eco-trade-status">✅ Live</div>
         </div>
         <div class="eco-card">
             <div class="icon">🛡️</div>
-            <h3>Страховка</h3>
-            <p>0.5% с каждого перевода идёт в страховой фонд. Ваши активы защищены.</p>
-            <a href="insurance.html" class="link-btn">Перейти →</a>
-            <div class="status">✅ Активно</div>
+            <h3 data-i18n="eco-insurance-title">Insurance</h3>
+            <p data-i18n="eco-insurance-desc">0.5% of every transfer goes to the SAFE insurance fund. Your assets are protected.</p>
+            <a href="insurance.html" class="link-btn" data-i18n="eco-insurance-btn">Go →</a>
+            <div class="status" data-i18n="eco-insurance-status">✅ Active</div>
         </div>
         <div class="eco-card">
             <div class="icon">⏳</div>
-            <h3>Стейкинг</h3>
-            <p>Заморозьте NEX и получайте пассивный доход с высоким APR.</p>
-            <a href="staking.html" class="link-btn">Перейти →</a>
-            <div class="status soon">⏳ Скоро</div>
+            <h3 data-i18n="eco-staking-title">Staking</h3>
+            <p data-i18n="eco-staking-desc">Lock your NEX and earn passive income. Coming soon with high APR.</p>
+            <a href="staking.html" class="link-btn" data-i18n="eco-staking-btn">Go →</a>
+            <div class="status soon" data-i18n="eco-staking-status">⏳ Soon</div>
         </div>
         <div class="eco-card">
             <div class="icon">🗳️</div>
-            <h3>DAO</h3>
-            <p>Каждый держатель NEX получает голос. Управляйте будущим протокола.</p>
-            <a href="dao.html" class="link-btn">Перейти →</a>
-            <div class="status soon">⏳ Скоро</div>
+            <h3 data-i18n="eco-dao-title">DAO</h3>
+            <p data-i18n="eco-dao-desc">Every NEX holder gets a vote. Propose and decide the future of the protocol.</p>
+            <a href="dao.html" class="link-btn" data-i18n="eco-dao-btn">Go →</a>
+            <div class="status soon" data-i18n="eco-dao-status">⏳ Soon</div>
         </div>
     </div>
 </section>
@@ -468,9 +211,213 @@
             <a href="https://www.geckoterminal.com/solana/pools/FKRKSVTQpCngomVftV6HRhPXAp9BJhbWoFwH1JwY1XA6" target="_blank">📊 GeckoTerminal</a>
             <a href="#">📈 CoinGecko</a>
         </div>
-        <p>© 2026 NEXUS Protocol. Built on Solana.</p>
+        <p data-i18n="footer-copy">© 2026 NEXUS Protocol. Built on Solana.</p>
     </div>
 </footer>
 
+<script>
+    // ============================================================
+    // 8 ЯЗЫКОВ — ПЕРЕВОДЧИК
+    // ============================================================
+
+    const translations = {
+        en: {
+            'nav-home': 'Home', 'nav-trade': 'Trade', 'nav-insurance': 'Insurance',
+            'nav-staking': 'Staking', 'nav-dao': 'DAO', 'nav-buy': '📊 Buy NEX',
+            'hero-line1': 'Connect.', 'hero-line2': 'Protect.', 'hero-line3': 'Earn.',
+            'hero-desc': 'NEXUS is the governance and utility hub for the SAFE ecosystem. Trade, insure, stake, and govern — all in one place on Solana.',
+            'hero-buy': '🚀 Buy NEX', 'hero-explore': '🌐 Explore',
+            'stat-supply': 'Supply', 'stat-fee': 'Transfer Fee', 'stat-fund': 'Insurance Fund',
+            'stat-holders': 'Holders', 'stat-network': 'Network',
+            'eco-title': '🌐 Ecosystem', 'eco-sub': 'Four pillars that make NEXUS the heart of SAFE',
+            'eco-trade-title': 'Trade', 'eco-trade-desc': 'Buy and sell NEX on Meteora with deep liquidity. Low slippage, Solana speed.',
+            'eco-trade-btn': 'Go →', 'eco-trade-status': '✅ Live',
+            'eco-insurance-title': 'Insurance', 'eco-insurance-desc': '0.5% of every transfer goes to the SAFE insurance fund. Your assets are protected.',
+            'eco-insurance-btn': 'Go →', 'eco-insurance-status': '✅ Active',
+            'eco-staking-title': 'Staking', 'eco-staking-desc': 'Lock your NEX and earn passive income. Coming soon with high APR.',
+            'eco-staking-btn': 'Go →', 'eco-staking-status': '⏳ Soon',
+            'eco-dao-title': 'DAO', 'eco-dao-desc': 'Every NEX holder gets a vote. Propose and decide the future of the protocol.',
+            'eco-dao-btn': 'Go →', 'eco-dao-status': '⏳ Soon',
+            'footer-copy': '© 2026 NEXUS Protocol. Built on Solana.'
+        },
+        ru: {
+            'nav-home': 'Главная', 'nav-trade': 'Торги', 'nav-insurance': 'Страховка',
+            'nav-staking': 'Стейкинг', 'nav-dao': 'DAO', 'nav-buy': '📊 Купить NEX',
+            'hero-line1': 'Подключай.', 'hero-line2': 'Защищай.', 'hero-line3': 'Зарабатывай.',
+            'hero-desc': 'NEXUS — центр управления и утилит экосистемы SAFE. Торгуйте, страхуйте, стейкайте и управляйте — всё в одном месте на Solana.',
+            'hero-buy': '🚀 Купить NEX', 'hero-explore': '🌐 Исследовать',
+            'stat-supply': 'Эмиссия', 'stat-fee': 'Комиссия', 'stat-fund': 'Страховой фонд',
+            'stat-holders': 'Держатели', 'stat-network': 'Сеть',
+            'eco-title': '🌐 Экосистема', 'eco-sub': 'Четыре столпа, которые делают NEXUS сердцем SAFE',
+            'eco-trade-title': 'Торги', 'eco-trade-desc': 'Покупайте и продавайте NEX на Meteora с глубокой ликвидностью.',
+            'eco-trade-btn': 'Перейти →', 'eco-trade-status': '✅ Активно',
+            'eco-insurance-title': 'Страховка', 'eco-insurance-desc': '0.5% с каждого перевода идёт в страховой фонд. Ваши активы защищены.',
+            'eco-insurance-btn': 'Перейти →', 'eco-insurance-status': '✅ Активно',
+            'eco-staking-title': 'Стейкинг', 'eco-staking-desc': 'Заморозьте NEX и получайте пассивный доход. Скоро с высоким APR.',
+            'eco-staking-btn': 'Перейти →', 'eco-staking-status': '⏳ Скоро',
+            'eco-dao-title': 'DAO', 'eco-dao-desc': 'Каждый держатель NEX получает голос. Управляйте будущим протокола.',
+            'eco-dao-btn': 'Перейти →', 'eco-dao-status': '⏳ Скоро',
+            'footer-copy': '© 2026 NEXUS Protocol. Создано на Solana.'
+        },
+        es: {
+            'nav-home': 'Inicio', 'nav-trade': 'Comerciar', 'nav-insurance': 'Seguro',
+            'nav-staking': 'Staking', 'nav-dao': 'DAO', 'nav-buy': '📊 Comprar NEX',
+            'hero-line1': 'Conecta.', 'hero-line2': 'Protege.', 'hero-line3': 'Gana.',
+            'hero-desc': 'NEXUS es el centro de gobernanza y utilidad del ecosistema SAFE. Comercia, asegura, haz staking y gobierna — todo en un solo lugar en Solana.',
+            'hero-buy': '🚀 Comprar NEX', 'hero-explore': '🌐 Explorar',
+            'stat-supply': 'Suministro', 'stat-fee': 'Comisión', 'stat-fund': 'Fondo de seguro',
+            'stat-holders': 'Tenedores', 'stat-network': 'Red',
+            'eco-title': '🌐 Ecosistema', 'eco-sub': 'Cuatro pilares que hacen de NEXUS el corazón de SAFE',
+            'eco-trade-title': 'Comercio', 'eco-trade-desc': 'Compra y vende NEX en Meteora con alta liquidez.',
+            'eco-trade-btn': 'Ir →', 'eco-trade-status': '✅ Activo',
+            'eco-insurance-title': 'Seguro', 'eco-insurance-desc': '0.5% de cada transferencia va al fondo de seguro. Tus activos están protegidos.',
+            'eco-insurance-btn': 'Ir →', 'eco-insurance-status': '✅ Activo',
+            'eco-staking-title': 'Staking', 'eco-staking-desc': 'Bloquea tus NEX y obtén ingresos pasivos. Próximamente con alto APR.',
+            'eco-staking-btn': 'Ir →', 'eco-staking-status': '⏳ Próximamente',
+            'eco-dao-title': 'DAO', 'eco-dao-desc': 'Cada tenedor de NEX tiene voto. Propón y decide el futuro del protocolo.',
+            'eco-dao-btn': 'Ir →', 'eco-dao-status': '⏳ Próximamente',
+            'footer-copy': '© 2026 NEXUS Protocol. Construido en Solana.'
+        },
+        fr: {
+            'nav-home': 'Accueil', 'nav-trade': 'Échanger', 'nav-insurance': 'Assurance',
+            'nav-staking': 'Staking', 'nav-dao': 'DAO', 'nav-buy': '📊 Acheter NEX',
+            'hero-line1': 'Connectez.', 'hero-line2': 'Protégez.', 'hero-line3': 'Gagnez.',
+            'hero-desc': 'NEXUS est le centre de gouvernance et d\'utilité de l\'écosystème SAFE. Échangez, assurez, stakez et gouvernez — tout au même endroit sur Solana.',
+            'hero-buy': '🚀 Acheter NEX', 'hero-explore': '🌐 Explorer',
+            'stat-supply': 'Offre', 'stat-fee': 'Frais', 'stat-fund': 'Fonds d\'assurance',
+            'stat-holders': 'Détenteurs', 'stat-network': 'Réseau',
+            'eco-title': '🌐 Écosystème', 'eco-sub': 'Quatre piliers qui font de NEXUS le cœur de SAFE',
+            'eco-trade-title': 'Échange', 'eco-trade-desc': 'Achetez et vendez NEX sur Meteora avec une liquidité profonde.',
+            'eco-trade-btn': 'Aller →', 'eco-trade-status': '✅ En direct',
+            'eco-insurance-title': 'Assurance', 'eco-insurance-desc': '0.5% de chaque transfert va au fonds d\'assurance. Vos actifs sont protégés.',
+            'eco-insurance-btn': 'Aller →', 'eco-insurance-status': '✅ Actif',
+            'eco-staking-title': 'Staking', 'eco-staking-desc': 'Bloquez vos NEX et gagnez des revenus passifs. Bientôt avec un APR élevé.',
+            'eco-staking-btn': 'Aller →', 'eco-staking-status': '⏳ Bientôt',
+            'eco-dao-title': 'DAO', 'eco-dao-desc': 'Chaque détenteur de NEX a un vote. Proposez et décidez de l\'avenir du protocole.',
+            'eco-dao-btn': 'Aller →', 'eco-dao-status': '⏳ Bientôt',
+            'footer-copy': '© 2026 NEXUS Protocol. Construit sur Solana.'
+        },
+        de: {
+            'nav-home': 'Startseite', 'nav-trade': 'Handeln', 'nav-insurance': 'Versicherung',
+            'nav-staking': 'Staking', 'nav-dao': 'DAO', 'nav-buy': '📊 NEX kaufen',
+            'hero-line1': 'Verbinde.', 'hero-line2': 'Schütze.', 'hero-line3': 'Verdiene.',
+            'hero-desc': 'NEXUS ist das Governance- und Utility-Zentrum des SAFE-Ökosystems. Handeln, versichern, stake und verwalten — alles an einem Ort auf Solana.',
+            'hero-buy': '🚀 NEX kaufen', 'hero-explore': '🌐 Entdecken',
+            'stat-supply': 'Angebot', 'stat-fee': 'Gebühr', 'stat-fund': 'Versicherungsfonds',
+            'stat-holders': 'Inhaber', 'stat-network': 'Netzwerk',
+            'eco-title': '🌐 Ökosystem', 'eco-sub': 'Vier Säulen, die NEXUS zum Herzen von SAFE machen',
+            'eco-trade-title': 'Handel', 'eco-trade-desc': 'Kaufen und verkaufen Sie NEX auf Meteora mit hoher Liquidität.',
+            'eco-trade-btn': 'Gehe →', 'eco-trade-status': '✅ Live',
+            'eco-insurance-title': 'Versicherung', 'eco-insurance-desc': '0.5% jeder Überweisung geht in den Versicherungsfonds. Ihre Vermögenswerte sind geschützt.',
+            'eco-insurance-btn': 'Gehe →', 'eco-insurance-status': '✅ Aktiv',
+            'eco-staking-title': 'Staking', 'eco-staking-desc': 'Sperren Sie Ihre NEX und verdienen Sie passives Einkommen. Demnächst mit hohem APR.',
+            'eco-staking-btn': 'Gehe →', 'eco-staking-status': '⏳ Bald',
+            'eco-dao-title': 'DAO', 'eco-dao-desc': 'Jeder NEX-Inhaber hat eine Stimme. Entscheiden Sie über die Zukunft des Protokolls.',
+            'eco-dao-btn': 'Gehe →', 'eco-dao-status': '⏳ Bald',
+            'footer-copy': '© 2026 NEXUS Protocol. Erbaut auf Solana.'
+        },
+        zh: {
+            'nav-home': '首页', 'nav-trade': '交易', 'nav-insurance': '保险',
+            'nav-staking': '质押', 'nav-dao': 'DAO', 'nav-buy': '📊 购买 NEX',
+            'hero-line1': '连接。', 'hero-line2': '保护。', 'hero-line3': '赚取。',
+            'hero-desc': 'NEXUS 是 SAFE 生态系统的治理和实用中心。在 Solana 上一站式交易、保险、质押和管理。',
+            'hero-buy': '🚀 购买 NEX', 'hero-explore': '🌐 探索',
+            'stat-supply': '供应量', 'stat-fee': '转账费', 'stat-fund': '保险基金',
+            'stat-holders': '持有者', 'stat-network': '网络',
+            'eco-title': '🌐 生态系统', 'eco-sub': '四大支柱使 NEXUS 成为 SAFE 的核心',
+            'eco-trade-title': '交易', 'eco-trade-desc': '在 Meteora 上买卖 NEX，具有高流动性。',
+            'eco-trade-btn': '前往 →', 'eco-trade-status': '✅ 已上线',
+            'eco-insurance-title': '保险', 'eco-insurance-desc': '每笔转账的 0.5% 进入保险基金。您的资产受到保护。',
+            'eco-insurance-btn': '前往 →', 'eco-insurance-status': '✅ 活跃中',
+            'eco-staking-title': '质押', 'eco-staking-desc': '锁定您的 NEX 并获得被动收入。即将推出，APR 很高。',
+            'eco-staking-btn': '前往 →', 'eco-staking-status': '⏳ 即将推出',
+            'eco-dao-title': 'DAO', 'eco-dao-desc': '每个 NEX 持有者都有投票权。提议并决定协议的未来。',
+            'eco-dao-btn': '前往 →', 'eco-dao-status': '⏳ 即将推出',
+            'footer-copy': '© 2026 NEXUS Protocol. 基于 Solana 构建。'
+        },
+        ja: {
+            'nav-home': 'ホーム', 'nav-trade': '取引', 'nav-insurance': '保険',
+            'nav-staking': 'ステーキング', 'nav-dao': 'DAO', 'nav-buy': '📊 NEXを購入',
+            'hero-line1': '接続する。', 'hero-line2': '守る。', 'hero-line3': '稼ぐ。',
+            'hero-desc': 'NEXUSはSAFEエコシステムのガバナンスとユーティリティの中心です。Solana上で取引、保険、ステーキング、ガバナンスをすべて一か所で。',
+            'hero-buy': '🚀 NEXを購入', 'hero-explore': '🌐 探索する',
+            'stat-supply': '供給量', 'stat-fee': '手数料', 'stat-fund': '保険基金',
+            'stat-holders': '保有者', 'stat-network': 'ネットワーク',
+            'eco-title': '🌐 エコシステム', 'eco-sub': 'NEXUSをSAFEの中心にする4つの柱',
+            'eco-trade-title': '取引', 'eco-trade-desc': 'MeteoraでNEXを売買、高い流動性。',
+            'eco-trade-btn': '行く →', 'eco-trade-status': '✅ 稼働中',
+            'eco-insurance-title': '保険', 'eco-insurance-desc': '送金の0.5%が保険基金に。資産が保護されます。',
+            'eco-insurance-btn': '行く →', 'eco-insurance-status': '✅ アクティブ',
+            'eco-staking-title': 'ステーキング', 'eco-staking-desc': 'NEXをロックして受動的収入を得る。近日公開、高APR。',
+            'eco-staking-btn': '行く →', 'eco-staking-status': '⏳ 近日公開',
+            'eco-dao-title': 'DAO', 'eco-dao-desc': 'すべてのNEX保有者が投票権を持つ。プロトコルの未来を提案し決定。',
+            'eco-dao-btn': '行く →', 'eco-dao-status': '⏳ 近日公開',
+            'footer-copy': '© 2026 NEXUS Protocol. Solana上に構築。'
+        },
+        ko: {
+            'nav-home': '홈', 'nav-trade': '거래', 'nav-insurance': '보험',
+            'nav-staking': '스테이킹', 'nav-dao': 'DAO', 'nav-buy': '📊 NEX 구매',
+            'hero-line1': '연결하라.', 'hero-line2': '보호하라.', 'hero-line3': '획득하라.',
+            'hero-desc': 'NEXUS는 SAFE 생태계의 거버넌스 및 유틸리티 허브입니다. Solana에서 거래, 보험, 스테이킹, 거버넌스를 한 곳에서.',
+            'hero-buy': '🚀 NEX 구매', 'hero-explore': '🌐 탐색',
+            'stat-supply': '공급량', 'stat-fee': '수수료', 'stat-fund': '보험 기금',
+            'stat-holders': '보유자', 'stat-network': '네트워크',
+            'eco-title': '🌐 생태계', 'eco-sub': 'NEXUS를 SAFE의 심장으로 만드는 4가지 기둥',
+            'eco-trade-title': '거래', 'eco-trade-desc': 'Meteora에서 높은 유동성으로 NEX를 사고팔 수 있습니다.',
+            'eco-trade-btn': '이동 →', 'eco-trade-status': '✅ 활성',
+            'eco-insurance-title': '보험', 'eco-insurance-desc': '모든 전송의 0.5%가 보험 기금으로 갑니다. 자산이 보호됩니다.',
+            'eco-insurance-btn': '이동 →', 'eco-insurance-status': '✅ 활성',
+            'eco-staking-title': '스테이킹', 'eco-staking-desc': 'NEX를 잠그고 수동적 소득을 얻으세요. 높은 APR로 곧 출시.',
+            'eco-staking-btn': '이동 →', 'eco-staking-status': '⏳ 곧',
+            'eco-dao-title': 'DAO', 'eco-dao-desc': '모든 NEX 보유자는 투표권을 가집니다. 프로토콜의 미래를 제안하고 결정하세요.',
+            'eco-dao-btn': '이동 →', 'eco-dao-status': '⏳ 곧',
+            'footer-copy': '© 2026 NEXUS Protocol. Solana에서 구축됨.'
+        }
+    };
+
+    // ——— ЯЗЫКОВАЯ ЛОГИКА ———
+    let currentLang = localStorage.getItem('nexusLang') || 'en';
+
+    function applyLanguage(lang) {
+        if (!translations[lang]) return;
+        const t = translations[lang];
+        document.documentElement.lang = lang;
+        document.querySelectorAll('[data-i18n]').forEach(el => {
+            const key = el.getAttribute('data-i18n');
+            if (t[key]) {
+                if (el.tagName === 'INPUT' || el.tagName === 'TEXTAREA') {
+                    el.placeholder = t[key];
+                } else {
+                    el.textContent = t[key];
+                }
+            }
+        });
+        document.getElementById('currentLangLabel').textContent = lang.toUpperCase();
+        document.querySelectorAll('.lang-dropdown button').forEach(btn => {
+            btn.classList.toggle('active', btn.dataset.lang === lang);
+        });
+        localStorage.setItem('nexusLang', lang);
+        currentLang = lang;
+    }
+
+    // ——— DROPDOWN TOGGLE ———
+    document.getElementById('langToggle').addEventListener('click', (e) => {
+        e.stopPropagation();
+        document.getElementById('langDropdown').classList.toggle('show');
+    });
+    document.addEventListener('click', () => {
+        document.getElementById('langDropdown').classList.remove('show');
+    });
+    document.querySelectorAll('.lang-dropdown button').forEach(btn => {
+        btn.addEventListener('click', (e) => {
+            e.stopPropagation();
+            applyLanguage(btn.dataset.lang);
+            document.getElementById('langDropdown').classList.remove('show');
+        });
+    });
+
+    // ——— ПРИМЕНЯЕМ ЯЗЫК ПРИ ЗАГРУЗКЕ ———
+    applyLanguage(currentLang);
+</script>
 </body>
 </html>
