@@ -73,9 +73,17 @@
             gap: 16px;
         }
         .logo {
+            display: flex;
+            align-items: center;
             font-size: 24px;
             font-weight: 900;
             letter-spacing: -1px;
+        }
+        .logo img {
+            height: 32px;
+            width: auto;
+            margin-right: 10px;
+            border-radius: 8px;
         }
         .logo span {
             background: linear-gradient(135deg, #6C3CE1, #00d4ff);
@@ -118,6 +126,13 @@
             z-index: 2;
             padding: 140px 0 60px;
             text-align: center;
+        }
+        .hero-logo {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            margin-bottom: 20px;
+            box-shadow: 0 0 60px rgba(108, 60, 225, 0.3);
         }
         .hero h1 {
             font-size: clamp(3rem, 8vw, 5.5rem);
@@ -210,16 +225,31 @@
             margin-top: 4px;
         }
 
-        /* ——— FEATURES ——— */
-        .features {
+        /* ——— ECOSYSTEM ——— */
+        .ecosystem {
             position: relative;
             z-index: 2;
+            padding: 40px 0 60px;
+        }
+        .ecosystem h2 {
+            text-align: center;
+            font-size: 2.2rem;
+            font-weight: 800;
+            margin-bottom: 12px;
+        }
+        .ecosystem .sub {
+            text-align: center;
+            color: #8892b0;
+            max-width: 500px;
+            margin: 0 auto 40px;
+            font-size: 1rem;
+        }
+        .eco-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
             gap: 20px;
-            padding: 40px 0 60px;
         }
-        .feature-card {
+        .eco-card {
             background: rgba(255, 255, 255, 0.02);
             border: 1px solid rgba(255, 255, 255, 0.05);
             padding: 28px 20px;
@@ -227,22 +257,36 @@
             text-align: center;
             transition: 0.25s;
         }
-        .feature-card:hover {
+        .eco-card:hover {
             border-color: #6C3CE1;
             transform: translateY(-6px);
             background: rgba(108, 60, 225, 0.05);
         }
-        .feature-card .icon {
+        .eco-card .icon {
             font-size: 2.6rem;
             margin-bottom: 12px;
         }
-        .feature-card h3 {
+        .eco-card h3 {
             font-size: 1.1rem;
             margin-bottom: 6px;
         }
-        .feature-card p {
+        .eco-card p {
             font-size: 0.9rem;
             color: #8892b0;
+        }
+        .eco-card .status {
+            display: inline-block;
+            margin-top: 10px;
+            font-size: 0.7rem;
+            font-weight: 600;
+            padding: 4px 16px;
+            border-radius: 40px;
+            background: rgba(20, 241, 149, 0.1);
+            color: #14f195;
+        }
+        .eco-card .status.soon {
+            background: rgba(255, 215, 0, 0.1);
+            color: #ffd700;
         }
 
         /* ——— TOKENOMICS ——— */
@@ -282,40 +326,6 @@
         .t-item .desc {
             font-size: 0.75rem;
             color: #8892b0;
-        }
-
-        /* ——— ROADMAP ——— */
-        .roadmap {
-            padding: 20px 0 60px;
-            text-align: center;
-            position: relative;
-            z-index: 2;
-        }
-        .roadmap h2 {
-            font-size: 2rem;
-            font-weight: 800;
-            margin-bottom: 16px;
-        }
-        .roadmap-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 16px;
-            max-width: 900px;
-            margin: 0 auto;
-        }
-        .roadmap-item {
-            background: rgba(255, 255, 255, 0.02);
-            border: 1px solid rgba(255, 255, 255, 0.04);
-            padding: 20px;
-            border-radius: 16px;
-            transition: 0.2s;
-        }
-        .roadmap-item:hover {
-            border-color: #00d4ff;
-        }
-        .roadmap-item strong {
-            color: #00d4ff;
-            font-size: 1.1rem;
         }
 
         /* ——— CONTRACT BOX ——— */
@@ -371,15 +381,12 @@
             .stats {
                 grid-template-columns: repeat(2, 1fr);
             }
-            .features {
+            .eco-grid {
                 grid-template-columns: 1fr 1fr;
-            }
-            .roadmap-grid {
-                grid-template-columns: 1fr;
             }
         }
         @media (max-width: 480px) {
-            .features {
+            .eco-grid {
                 grid-template-columns: 1fr;
             }
             .stats {
@@ -397,23 +404,26 @@
 <!-- HEADER -->
 <header>
     <div class="container header-inner">
-        <div class="logo"><span>NEXUS</span></div>
+        <div class="logo">
+            <img src="https://raw.githubusercontent.com/eximtrustoilbank-sudo/nexus/refs/heads/main/nexus_logo.png" alt="NEXUS Logo">
+            <span>NEXUS</span>
+        </div>
         <div class="nav-links">
-            <a href="#features">Ecosystem</a>
+            <a href="#ecosystem">Ecosystem</a>
             <a href="#tokenomics">Tokenomics</a>
-            <a href="#roadmap">Roadmap</a>
-            <a href="#" class="btn-primary">🌐 Launch App</a>
+            <a href="https://www.geckoterminal.com/solana/pools/FKRKSVTQpCngomVftV6HRhPXAp9BJhbWoFwH1JwY1XA6" target="_blank" class="btn-primary">📊 Chart</a>
         </div>
     </div>
 </header>
 
 <!-- HERO -->
 <section class="hero container">
+    <img src="https://raw.githubusercontent.com/eximtrustoilbank-sudo/nexus/refs/heads/main/nexus_logo.png" alt="NEXUS Logo" class="hero-logo">
     <h1>Connect. <span class="gradient">Protect.</span> Earn.</h1>
-    <p>NEXUS is the governance hub for the SAFE ecosystem. Stake, vote, and earn rewards on Solana.</p>
+    <p>NEXUS is the governance and utility hub for the SAFE ecosystem. Stake, vote, and earn rewards on Solana.</p>
     <div class="hero-buttons">
-        <a href="#" class="btn-hero">🚀 Buy $NEX</a>
-        <a href="#tokenomics" class="btn-secondary">📊 Tokenomics</a>
+        <a href="https://www.geckoterminal.com/solana/pools/FKRKSVTQpCngomVftV6HRhPXAp9BJhbWoFwH1JwY1XA6" target="_blank" class="btn-hero">🚀 Buy $NEX</a>
+        <a href="#ecosystem" class="btn-secondary">🌐 Explore Ecosystem</a>
     </div>
 </section>
 
@@ -437,27 +447,35 @@
     </div>
 </section>
 
-<!-- FEATURES -->
-<section class="container features" id="features">
-    <div class="feature-card">
-        <div class="icon">⚡</div>
-        <h3>Solana Speed</h3>
-        <p>Transactions in under 0.5 seconds with near-zero fees.</p>
-    </div>
-    <div class="feature-card">
-        <div class="icon">🛡️</div>
-        <h3>Insurance Backed</h3>
-        <p>Protected by the SAFE insurance fund — 0.5% fee goes to security.</p>
-    </div>
-    <div class="feature-card">
-        <div class="icon">🗳️</div>
-        <h3>DAO Governance</h3>
-        <p>Every NEX holder gets a vote. Shape the future of the ecosystem.</p>
-    </div>
-    <div class="feature-card">
-        <div class="icon">💧</div>
-        <h3>Liquid Staking</h3>
-        <p>Stake NEX and earn passive income while staying liquid.</p>
+<!-- ECOSYSTEM -->
+<section class="container ecosystem" id="ecosystem">
+    <h2>🌐 Ecosystem</h2>
+    <p class="sub">Four pillars that make NEXUS the heart of SAFE</p>
+    <div class="eco-grid">
+        <div class="eco-card">
+            <div class="icon">📊</div>
+            <h3>Trade on Meteora</h3>
+            <p>Buy and sell NEX with deep liquidity. Low slippage, Solana speed.</p>
+            <span class="status">✅ Live Now</span>
+        </div>
+        <div class="eco-card">
+            <div class="icon">🛡️</div>
+            <h3>Insurance Fund</h3>
+            <p>0.5% of every transfer goes to the SAFE insurance fund. Your assets are protected.</p>
+            <span class="status">✅ Active</span>
+        </div>
+        <div class="eco-card">
+            <div class="icon">⏳</div>
+            <h3>Staking & Rewards</h3>
+            <p>Lock your NEX and earn passive income. Coming soon with high APR.</p>
+            <span class="status soon">⏳ Coming Soon</span>
+        </div>
+        <div class="eco-card">
+            <div class="icon">🗳️</div>
+            <h3>DAO Governance</h3>
+            <p>Every NEX holder gets a vote. Propose and decide the future of the protocol.</p>
+            <span class="status soon">⏳ Coming Soon</span>
+        </div>
     </div>
 </section>
 
@@ -472,18 +490,7 @@
         <div class="t-item"><div class="pct">10%</div><div class="desc">Insurance Fund</div></div>
     </div>
     <div class="contract-box">
-        📜 NEXUS Contract: 6WBoPatSisMYCN8y6xZECu4E9VcMhqyE56vD3zrQbCts
-    </div>
-</section>
-
-<!-- ROADMAP -->
-<section class="container roadmap" id="roadmap">
-    <h2>🗺️ Roadmap</h2>
-    <div class="roadmap-grid">
-        <div class="roadmap-item"><strong>Phase 1</strong><br />Launch NEX &amp; Liquidity</div>
-        <div class="roadmap-item"><strong>Phase 2</strong><br />Staking &amp; Rewards</div>
-        <div class="roadmap-item"><strong>Phase 3</strong><br />DAO Governance Live</div>
-        <div class="roadmap-item"><strong>Phase 4</strong><br />Cross-Chain Bridges</div>
+        📜 NEXUS: 6WBoPatSisMYCN8y6xZECu4E9VcMhqyE56vD3zrQbCts
     </div>
 </section>
 
@@ -493,8 +500,7 @@
         <div class="socials">
             <a href="#">🐦 Twitter</a>
             <a href="#">💬 Telegram</a>
-            <a href="#">📊 DexScreener</a>
-            <a href="#">📈 CoinGecko</a>
+            <a href="https://www.geckoterminal.com/solana/pools/FKRKSVTQpCngomVftV6HRhPXAp9BJhbWoFwH1JwY1XA6" target="_blank">📊 GeckoTerminal</a>
         </div>
         <p>© 2026 NEXUS Protocol. Built on Solana.</p>
     </div>
