@@ -17,13 +17,9 @@
         }
         a { color: #00e5ff; text-decoration: none; }
         .container { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
-
-        /* GLOW */
         .glow { position: fixed; border-radius: 50%; filter: blur(150px); opacity: 0.12; pointer-events: none; z-index: 0; }
         .glow-1 { width: 600px; height: 600px; background: #6C3CE1; top: -200px; right: -100px; }
         .glow-2 { width: 600px; height: 600px; background: #00d4ff; bottom: -200px; left: -100px; }
-
-        /* HEADER */
         header {
             position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
             padding: 12px 0; background: rgba(7,9,15,0.92); backdrop-filter: blur(20px);
@@ -38,64 +34,30 @@
         .nav-links a:hover { color: #fff; background: rgba(108,60,225,0.12); }
         .nav-links .active { color: #fff; background: rgba(108,60,225,0.15); }
         .btn-buy { background: linear-gradient(135deg, #6C3CE1, #00d4ff); color: #0b0e1a !important; padding: 6px 18px; border-radius: 40px; font-weight: 700; }
-        .btn-buy:hover { transform: scale(1.04); box-shadow: 0 0 30px rgba(108,60,225,0.3); }
-
-        /* PAGE HEADER */
         .page-header { text-align: center; padding: 20px 0; }
         .page-header h1 { font-size: 2.5rem; font-weight: 900; }
         .page-header h1 span { background: linear-gradient(135deg, #6C3CE1, #00d4ff); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
         .page-header p { color: #8892b0; }
-
-        /* SWAP WIDGET */
-        .swap-widget {
-            max-width: 440px; margin: 0 auto 30px;
-            background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.06);
-            border-radius: 24px; padding: 24px;
-        }
+        .swap-widget { max-width: 440px; margin: 0 auto 30px; background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.06); border-radius: 24px; padding: 24px; }
         .swap-widget .row { display: flex; justify-content: space-between; font-size: 13px; color: #8892b0; margin-bottom: 4px; }
-        .swap-widget .input-box {
-            background: rgba(0,0,0,0.3); border-radius: 14px; padding: 14px 16px;
-            display: flex; justify-content: space-between; align-items: center;
-            border: 1px solid rgba(255,255,255,0.04); margin-bottom: 10px;
-        }
+        .swap-widget .input-box { background: rgba(0,0,0,0.3); border-radius: 14px; padding: 14px 16px; display: flex; justify-content: space-between; align-items: center; border: 1px solid rgba(255,255,255,0.04); margin-bottom: 10px; }
         .swap-widget .input-box input { background: transparent; border: none; color: #fff; font-size: 1.4rem; font-weight: 700; width: 70%; outline: none; }
         .swap-widget .input-box .token { display: flex; align-items: center; gap: 6px; font-weight: 700; }
         .swap-widget .input-box .token .dot { width: 22px; height: 22px; border-radius: 50%; display: inline-block; }
         .dot-nex { background: linear-gradient(135deg, #6C3CE1, #00d4ff); }
         .dot-usdc { background: #2775ca; }
         .swap-arrow { text-align: center; font-size: 1.4rem; color: #00d4ff; margin: 4px 0; }
-        .btn-swap {
-            width: 100%; padding: 14px; border-radius: 60px; border: none;
-            background: linear-gradient(135deg, #6C3CE1, #00d4ff);
-            color: #0b0e1a; font-weight: 800; font-size: 1rem; cursor: pointer; transition: 0.2s;
-        }
+        .btn-swap { width: 100%; padding: 14px; border-radius: 60px; border: none; background: linear-gradient(135deg, #6C3CE1, #00d4ff); color: #0b0e1a; font-weight: 800; font-size: 1rem; cursor: pointer; transition: 0.2s; }
         .btn-swap:hover { transform: scale(1.01); box-shadow: 0 0 30px rgba(108,60,225,0.3); }
         .swap-info { display: flex; justify-content: space-between; font-size: 11px; color: #8892b0; margin-top: 10px; }
-
-        /* РАЗДЕЛЫ ТОРГОВЛИ (ЧИСТЫЕ КАТЕГОРИИ) */
         .section-title { font-size: 1.2rem; font-weight: 700; margin: 30px 0 12px; color: #eef2f8; }
-        .tools-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
-            gap: 8px; padding-bottom: 20px;
-        }
-        .tool-card {
-            background: rgba(255,255,255,0.02); border: 1px solid rgba(255,255,255,0.04);
-            border-radius: 12px; padding: 10px 14px;
-            display: flex; align-items: center; gap: 8px;
-            font-size: 12px; font-weight: 500; color: #b0b8d1;
-            transition: 0.2s; cursor: default;
-        }
+        .tools-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(160px, 1fr)); gap: 8px; padding-bottom: 20px; }
+        .tool-card { background: rgba(255,255,255,0.02); border: 1px solid rgba(255,255,255,0.04); border-radius: 12px; padding: 10px 14px; display: flex; align-items: center; gap: 8px; font-size: 12px; font-weight: 500; color: #b0b8d1; transition: 0.2s; cursor: pointer; }
         .tool-card:hover { border-color: #6C3CE1; background: rgba(108,60,225,0.06); color: #fff; }
         .tool-card .icon { font-size: 16px; }
-
-        footer {
-            padding: 24px 0; border-top: 1px solid rgba(255,255,255,0.04);
-            text-align: center; color: #5a6488; font-size: 0.75rem;
-        }
+        footer { padding: 24px 0; border-top: 1px solid rgba(255,255,255,0.04); text-align: center; color: #5a6488; font-size: 0.75rem; }
         footer .links a { color: #b0b8d1; margin: 0 12px; font-size: 12px; }
         footer .links a:hover { color: #fff; }
-
         @media (max-width: 700px) {
             body { padding-top: 110px; }
             .header-inner { flex-direction: column; align-items: stretch; text-align: center; }
@@ -106,110 +68,81 @@
     </style>
 </head>
 <body>
-
 <div class="glow glow-1"></div>
 <div class="glow glow-2"></div>
-
 <header>
     <div class="container header-inner">
-        <a href="index.html" class="logo">
-            <img src="https://raw.githubusercontent.com/eximtrustoilbank-sudo/nexus/refs/heads/main/nexus_logo.png" alt="NEXUS">
-            <span>NEXUS</span>
-        </a>
+        <a href="index.html" class="logo"><img src="https://raw.githubusercontent.com/eximtrustoilbank-sudo/nexus/refs/heads/main/nexus_logo.png" alt="NEXUS"><span>NEXUS</span></a>
         <div class="nav-links">
-            <a href="index.html">Home</a>
-            <a href="trade.html" class="active">Trade</a>
-            <a href="insurance.html">Insurance</a>
-            <a href="staking.html">Staking</a>
+            <a href="index.html">Главная</a>
+            <a href="trade.html" class="active">Торги</a>
+            <a href="insurance.html">Страховка</a>
+            <a href="staking.html">Стейкинг</a>
             <a href="dao.html">DAO</a>
-            <a href="https://www.geckoterminal.com/solana/pools/FKRKSVTQpCngomVftV6HRhPXAp9BJhbWoFwH1JwY1XA6" target="_blank" class="btn-buy">📊 Buy NEX</a>
+            <a href="https://www.geckoterminal.com/solana/pools/FKRKSVTQpCngomVftV6HRhPXAp9BJhbWoFwH1JwY1XA6" target="_blank" class="btn-buy">📊 Купить NEX</a>
         </div>
     </div>
 </header>
-
 <div class="container">
-    <div class="page-header">
-        <h1>📊 <span>Торговая платформа</span></h1>
-        <p>Покупай, продавай и управляй своими NEX в реальном времени</p>
-    </div>
-
-    <!-- SWAP WIDGET -->
+    <div class="page-header"><h1>📊 <span>Торговая платформа</span></h1><p>Покупай, продавай и управляй своими NEX в реальном времени</p></div>
     <div class="swap-widget">
         <div class="row"><span>Отдаёте</span><span>Баланс: 12,450 NEX</span></div>
-        <div class="input-box">
-            <input type="text" value="1000" />
-            <div class="token"><span class="dot dot-nex"></span> NEX</div>
-        </div>
+        <div class="input-box"><input type="text" value="1000" /><div class="token"><span class="dot dot-nex"></span> NEX</div></div>
         <div class="swap-arrow">⬇️</div>
         <div class="row"><span>Получаете</span><span>Баланс: 245.80 USDC</span></div>
-        <div class="input-box">
-            <input type="text" value="0.10" placeholder="0.00" />
-            <div class="token"><span class="dot dot-usdc"></span> USDC</div>
-        </div>
-        <button class="btn-swap" onclick="window.open('https://www.geckoterminal.com/solana/pools/FKRKSVTQpCngomVftV6HRhPXAp9BJhbWoFwH1JwY1XA6', '_blank')">
-            🚀 Обменять NEX → USDC
-        </button>
+        <div class="input-box"><input type="text" value="0.10" placeholder="0.00" /><div class="token"><span class="dot dot-usdc"></span> USDC</div></div>
+        <button class="btn-swap" onclick="window.open('https://www.geckoterminal.com/solana/pools/FKRKSVTQpCngomVftV6HRhPXAp9BJhbWoFwH1JwY1XA6', '_blank')">🚀 Обменять NEX → USDC</button>
         <div class="swap-info"><span>Курс: 1 NEX ≈ 0.0001 USDC</span><span>Комиссия: 0.3%</span></div>
     </div>
-
-    <!-- РАЗДЕЛ 1: БЫСТРАЯ ТОРГОВЛЯ -->
     <div class="section-title">⚡ Быстрая торговля</div>
     <div class="tools-grid">
-        <div class="tool-card"><span class="icon">📈</span> Рыночный ордер</div>
-        <div class="tool-card"><span class="icon">📉</span> Лимитный ордер</div>
-        <div class="tool-card"><span class="icon">🛑</span> Стоп-лосс</div>
-        <div class="tool-card"><span class="icon">🎯</span> Тейк-профит</div>
-        <div class="tool-card"><span class="icon">🔄</span> OCO-ордер</div>
-        <div class="tool-card"><span class="icon">🧊</span> Айсберг-ордер</div>
+        <a href="https://jup.ag/" target="_blank" class="tool-card"><span class="icon">📈</span> Рыночный ордер</a>
+        <a href="https://jup.ag/limit" target="_blank" class="tool-card"><span class="icon">📉</span> Лимитный ордер</a>
+        <a href="https://www.binance.com/en/trade/" target="_blank" class="tool-card"><span class="icon">🛑</span> Стоп-лосс</a>
+        <a href="https://www.binance.com/en/trade/" target="_blank" class="tool-card"><span class="icon">🎯</span> Тейк-профит</a>
+        <a href="https://www.bybit.com/trade/" target="_blank" class="tool-card"><span class="icon">🔄</span> OCO-ордер</a>
+        <a href="https://www.kucoin.com/trade/" target="_blank" class="tool-card"><span class="icon">🧊</span> Айсберг-ордер</a>
     </div>
-
-    <!-- РАЗДЕЛ 2: АВТОМАТИЧЕСКИЕ СТРАТЕГИИ -->
     <div class="section-title">🤖 Автоматические стратегии</div>
     <div class="tools-grid">
-        <div class="tool-card"><span class="icon">📊</span> DCA (Усреднение)</div>
-        <div class="tool-card"><span class="icon">⏱️</span> TWAP (Взвешенное время)</div>
-        <div class="tool-card"><span class="icon">📦</span> Сеточная торговля</div>
-        <div class="tool-card"><span class="icon">🔁</span> Ребалансировка</div>
-        <div class="tool-card"><span class="icon">⚡</span> Арбитраж</div>
-        <div class="tool-card"><span class="icon">🎯</span> Снайпер</div>
+        <a href="https://jup.ag/dca" target="_blank" class="tool-card"><span class="icon">📊</span> DCA (Усреднение)</a>
+        <a href="https://jup.ag/twap" target="_blank" class="tool-card"><span class="icon">⏱️</span> TWAP</a>
+        <a href="https://www.binance.com/en/grid-bot" target="_blank" class="tool-card"><span class="icon">📦</span> Сеточная торговля</a>
+        <a href="https://www.kucoin.com/" target="_blank" class="tool-card"><span class="icon">🔁</span> Ребалансировка</a>
+        <a href="https://arbitrum.io/" target="_blank" class="tool-card"><span class="icon">⚡</span> Арбитраж</a>
+        <a href="https://dexscreener.com/" target="_blank" class="tool-card"><span class="icon">🎯</span> Снайпер</a>
     </div>
-
-    <!-- РАЗДЕЛ 3: АНАЛИТИКА -->
     <div class="section-title">📊 Аналитика рынка</div>
     <div class="tools-grid">
-        <div class="tool-card"><span class="icon">📉</span> График цен</div>
-        <div class="tool-card"><span class="icon">📊</span> Объёмы</div>
-        <div class="tool-card"><span class="icon">👥</span> Активность китов</div>
-        <div class="tool-card"><span class="icon">📰</span> Новости рынка</div>
-        <div class="tool-card"><span class="icon">🔮</span> Прогноз AI</div>
-        <div class="tool-card"><span class="icon">📋</span> История сделок</div>
+        <a href="https://www.tradingview.com/" target="_blank" class="tool-card"><span class="icon">📉</span> График цен</a>
+        <a href="https://coingecko.com/" target="_blank" class="tool-card"><span class="icon">📊</span> Объёмы</a>
+        <a href="https://whale-tracker.com/" target="_blank" class="tool-card"><span class="icon">👥</span> Активность китов</a>
+        <a href="https://cryptopanic.com/" target="_blank" class="tool-card"><span class="icon">📰</span> Новости рынка</a>
+        <a href="https://www.coinpredictor.ai/" target="_blank" class="tool-card"><span class="icon">🔮</span> Прогноз AI</a>
+        <a href="https://solscan.io/" target="_blank" class="tool-card"><span class="icon">📋</span> История сделок</a>
     </div>
-
-    <!-- РАЗДЕЛ 4: ИНСТРУМЕНТЫ -->
     <div class="section-title">🛠️ Полезные инструменты</div>
     <div class="tools-grid">
-        <div class="tool-card"><span class="icon">🧮</span> Калькулятор</div>
-        <div class="tool-card"><span class="icon">📈</span> Конвертер</div>
-        <div class="tool-card"><span class="icon">📊</span> Портфель</div>
-        <div class="tool-card"><span class="icon">🔔</span> Оповещения</div>
-        <div class="tool-card"><span class="icon">📋</span> История</div>
-        <div class="tool-card"><span class="icon">📤</span> Экспорт</div>
+        <a href="https://www.calculator.net/" target="_blank" class="tool-card"><span class="icon">🧮</span> Калькулятор</a>
+        <a href="https://www.coingecko.com/en/converter" target="_blank" class="tool-card"><span class="icon">📈</span> Конвертер</a>
+        <a href="https://debank.com/" target="_blank" class="tool-card"><span class="icon">📊</span> Портфель</a>
+        <a href="https://cryptocurrencyalerting.com/" target="_blank" class="tool-card"><span class="icon">🔔</span> Оповещения</a>
+        <a href="https://solscan.io/" target="_blank" class="tool-card"><span class="icon">📋</span> История</a>
+        <a href="https://coingecko.com/" target="_blank" class="tool-card"><span class="icon">📤</span> Экспорт</a>
     </div>
 </div>
-
 <footer>
     <div class="container">
         <div class="links">
-            <a href="index.html">Home</a>
-            <a href="trade.html">Trade</a>
-            <a href="insurance.html">Insurance</a>
-            <a href="staking.html">Staking</a>
+            <a href="index.html">Главная</a>
+            <a href="trade.html">Торги</a>
+            <a href="insurance.html">Страховка</a>
+            <a href="staking.html">Стейкинг</a>
             <a href="dao.html">DAO</a>
         </div>
         <p>📜 6WBoPatSisMYCN8y6xZECu4E9VcMhqyE56vD3zrQbCts</p>
         <p style="margin-top:6px;font-size:0.65rem;color:#5a6488;">© 2026 NEXUS Protocol — Торгуй с умом на Solana</p>
     </div>
 </footer>
-
 </body>
 </html>
