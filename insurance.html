@@ -34,6 +34,17 @@
         .nav-links a:hover { color: #fff; background: rgba(108,60,225,0.12); }
         .nav-links .active { color: #fff; background: rgba(108,60,225,0.15); }
         .btn-buy { background: linear-gradient(135deg, #6C3CE1, #00d4ff); color: #0b0e1a !important; padding: 6px 18px; border-radius: 40px; font-weight: 700; }
+        .btn-buy:hover { transform: scale(1.04); box-shadow: 0 0 30px rgba(108,60,225,0.3); }
+        /* ——— LANGUAGE SWITCHER ——— */
+        .lang-switcher { position: relative; display: inline-block; margin-left: 4px; }
+        .lang-btn { background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.08); color: #eef2f8; padding: 4px 12px; border-radius: 40px; font-size: 12px; cursor: pointer; font-weight: 600; transition: 0.2s; display: flex; align-items: center; gap: 4px; }
+        .lang-btn:hover { background: rgba(108,60,225,0.15); border-color: #6C3CE1; }
+        .lang-dropdown { position: absolute; top: 120%; right: 0; background: rgba(7,9,15,0.97); backdrop-filter: blur(20px); border: 1px solid rgba(255,255,255,0.06); border-radius: 16px; padding: 6px 0; min-width: 140px; display: none; z-index: 999; box-shadow: 0 20px 60px rgba(0,0,0,0.6); }
+        .lang-dropdown.show { display: block; }
+        .lang-dropdown button { background: none; border: none; color: #b0b8d1; padding: 6px 18px; width: 100%; text-align: left; font-size: 12px; font-weight: 500; cursor: pointer; transition: 0.1s; font-family: inherit; }
+        .lang-dropdown button:hover { background: rgba(108,60,225,0.08); color: #fff; }
+        .lang-dropdown button.active { color: #00d4ff; font-weight: 700; }
+        /* ——— PAGE ——— */
         .page-header { text-align: center; padding: 20px 0; }
         .page-header h1 { font-size: 2.5rem; font-weight: 900; }
         .page-header h1 span { background: linear-gradient(135deg, #6C3CE1, #00d4ff); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
@@ -58,6 +69,7 @@
             body { padding-top: 110px; }
             .header-inner { flex-direction: column; align-items: stretch; text-align: center; }
             .nav-links { justify-content: center; }
+            .lang-switcher { margin: 4px auto 0; }
             .page-header h1 { font-size: 1.8rem; }
         }
     </style>
@@ -69,44 +81,237 @@
     <div class="container header-inner">
         <a href="index.html" class="logo"><img src="https://raw.githubusercontent.com/eximtrustoilbank-sudo/nexus/refs/heads/main/nexus_logo.png" alt="NEXUS"><span>NEXUS</span></a>
         <div class="nav-links">
-            <a href="index.html">Главная</a>
-            <a href="trade.html">Торги</a>
-            <a href="insurance.html" class="active">Страховка</a>
-            <a href="staking.html">Стейкинг</a>
-            <a href="dao.html">DAO</a>
-            <a href="https://www.geckoterminal.com/solana/pools/FKRKSVTQpCngomVftV6HRhPXAp9BJhbWoFwH1JwY1XA6" target="_blank" class="btn-buy">📊 Купить NEX</a>
+            <a href="index.html" data-i18n="nav-home">Главная</a>
+            <a href="trade.html" data-i18n="nav-trade">Торги</a>
+            <a href="insurance.html" class="active" data-i18n="nav-insurance">Страховка</a>
+            <a href="staking.html" data-i18n="nav-staking">Стейкинг</a>
+            <a href="dao.html" data-i18n="nav-dao">DAO</a>
+            <a href="https://www.geckoterminal.com/solana/pools/FKRKSVTQpCngomVftV6HRhPXAp9BJhbWoFwH1JwY1XA6" target="_blank" class="btn-buy" data-i18n="nav-buy">📊 Купить NEX</a>
+            <!-- Language Switcher -->
+            <div class="lang-switcher">
+                <button class="lang-btn" id="langToggle">🌐 <span id="currentLangLabel">RU</span></button>
+                <div class="lang-dropdown" id="langDropdown">
+                    <button data-lang="ru" class="active">🇷🇺 Русский</button>
+                    <button data-lang="en">🇬🇧 English</button>
+                    <button data-lang="es">🇪🇸 Español</button>
+                    <button data-lang="fr">🇫🇷 Français</button>
+                    <button data-lang="de">🇩🇪 Deutsch</button>
+                    <button data-lang="zh">🇨🇳 中文</button>
+                    <button data-lang="ja">🇯🇵 日本語</button>
+                    <button data-lang="ko">🇰🇷 한국어</button>
+                </div>
+            </div>
         </div>
     </div>
 </header>
 <div class="container">
-    <div class="page-header"><h1>🛡️ <span>Страховой фонд</span></h1><p>0.5% с каждого перевода NEX автоматически защищает ваши активы</p></div>
+    <div class="page-header"><h1>🛡️ <span data-i18n="page-title">Страховой фонд</span></h1><p data-i18n="page-desc">0.5% с каждого перевода NEX автоматически защищает ваши активы</p></div>
     <div class="fund-visual">
-        <div class="ring"><div class="ring-inner"><span class="big">78%</span><span class="small">Заполнен</span></div></div>
-        <div><span style="font-size:2rem;font-weight:800;color:#00d4ff;">$847,320</span><br><span style="color:#8892b0;">Общий резерв</span></div>
-        <div><span style="font-size:1.2rem;font-weight:600;">+$12,430</span><br><span style="color:#8892b0;">За этот месяц</span></div>
-        <div><span style="font-size:1.2rem;font-weight:600;">4.2 SOL</span><br><span style="color:#8892b0;">Средний взнос в день</span></div>
+        <div class="ring"><div class="ring-inner"><span class="big" data-i18n="fund-pct">78%</span><span class="small" data-i18n="fund-filled">Заполнен</span></div></div>
+        <div><span style="font-size:2rem;font-weight:800;color:#00d4ff;" data-i18n="fund-total">$847,320</span><br><span style="color:#8892b0;" data-i18n="fund-reserve">Общий резерв</span></div>
+        <div><span style="font-size:1.2rem;font-weight:600;" data-i18n="fund-month">+$12,430</span><br><span style="color:#8892b0;" data-i18n="fund-month-label">За этот месяц</span></div>
+        <div><span style="font-size:1.2rem;font-weight:600;" data-i18n="fund-day">4.2 SOL</span><br><span style="color:#8892b0;" data-i18n="fund-day-label">Средний взнос в день</span></div>
     </div>
     <div class="stats-grid">
-        <div class="stat-card"><div class="num">8,432</div><div class="lbl">Активных полисов</div></div>
-        <div class="stat-card"><div class="num">4.2 ч</div><div class="lbl">Среднее время выплаты</div></div>
-        <div class="stat-card"><div class="num">$124,500</div><div class="lbl">Всего выплачено</div></div>
-        <div class="stat-card"><div class="num">14.7%</div><div class="lbl">Использование фонда</div></div>
+        <div class="stat-card"><div class="num" data-i18n="stat1-num">8,432</div><div class="lbl" data-i18n="stat1-lbl">Активных полисов</div></div>
+        <div class="stat-card"><div class="num" data-i18n="stat2-num">4.2 ч</div><div class="lbl" data-i18n="stat2-lbl">Среднее время выплаты</div></div>
+        <div class="stat-card"><div class="num" data-i18n="stat3-num">$124,500</div><div class="lbl" data-i18n="stat3-lbl">Всего выплачено</div></div>
+        <div class="stat-card"><div class="num" data-i18n="stat4-num">14.7%</div><div class="lbl" data-i18n="stat4-lbl">Использование фонда</div></div>
     </div>
     <div class="tools-grid">
-        <a href="https://www.nexusmutual.io/" target="_blank" class="tool-card"><span class="icon">🛡️</span> Моя страховка</a>
-        <a href="https://etherscan.io/" target="_blank" class="tool-card"><span class="icon">📋</span> История выплат</a>
-        <a href="https://defillama.com/" target="_blank" class="tool-card"><span class="icon">📊</span> Статистика фонда</a>
-        <a href="https://phantom.app/" target="_blank" class="tool-card"><span class="icon">🔒</span> Защита кошелька</a>
-        <a href="https://rugcheck.xyz/" target="_blank" class="tool-card"><span class="icon">⚡</span> Быстрая проверка</a>
-        <a href="#" target="_blank" class="tool-card"><span class="icon">📞</span> Поддержка</a>
+        <a href="https://www.nexusmutual.io/" target="_blank" class="tool-card"><span class="icon">🛡️</span> <span data-i18n="tool1">Моя страховка</span></a>
+        <a href="https://etherscan.io/" target="_blank" class="tool-card"><span class="icon">📋</span> <span data-i18n="tool2">История выплат</span></a>
+        <a href="https://defillama.com/" target="_blank" class="tool-card"><span class="icon">📊</span> <span data-i18n="tool3">Статистика фонда</span></a>
+        <a href="https://phantom.app/" target="_blank" class="tool-card"><span class="icon">🔒</span> <span data-i18n="tool4">Защита кошелька</span></a>
+        <a href="https://rugcheck.xyz/" target="_blank" class="tool-card"><span class="icon">⚡</span> <span data-i18n="tool5">Быстрая проверка</span></a>
+        <a href="#" target="_blank" class="tool-card"><span class="icon">📞</span> <span data-i18n="tool6">Поддержка</span></a>
     </div>
 </div>
 <footer>
     <div class="container">
-        <div class="links"><a href="index.html">Главная</a><a href="trade.html">Торги</a><a href="insurance.html">Страховка</a><a href="staking.html">Стейкинг</a><a href="dao.html">DAO</a></div>
+        <div class="links">
+            <a href="index.html" data-i18n="nav-home">Главная</a>
+            <a href="trade.html" data-i18n="nav-trade">Торги</a>
+            <a href="insurance.html" data-i18n="nav-insurance">Страховка</a>
+            <a href="staking.html" data-i18n="nav-staking">Стейкинг</a>
+            <a href="dao.html" data-i18n="nav-dao">DAO</a>
+        </div>
         <p>📜 6WBoPatSisMYCN8y6xZECu4E9VcMhqyE56vD3zrQbCts</p>
-        <p style="margin-top:6px;font-size:0.65rem;color:#5a6488;">© 2026 NEXUS Protocol — Твоя безопасность на Solana</p>
+        <p style="margin-top:6px;font-size:0.65rem;color:#5a6488;" data-i18n="footer-copy">© 2026 NEXUS Protocol — Твоя безопасность на Solana</p>
     </div>
 </footer>
+<script>
+    // ——— ПЕРЕВОДЧИК НА 8 ЯЗЫКОВ ———
+    const translations = {
+        ru: {
+            'nav-home': 'Главная', 'nav-trade': 'Торги', 'nav-insurance': 'Страховка',
+            'nav-staking': 'Стейкинг', 'nav-dao': 'DAO', 'nav-buy': '📊 Купить NEX',
+            'page-title': 'Страховой фонд', 'page-desc': '0.5% с каждого перевода NEX автоматически защищает ваши активы',
+            'fund-pct': '78%', 'fund-filled': 'Заполнен',
+            'fund-total': '$847,320', 'fund-reserve': 'Общий резерв',
+            'fund-month': '+$12,430', 'fund-month-label': 'За этот месяц',
+            'fund-day': '4.2 SOL', 'fund-day-label': 'Средний взнос в день',
+            'stat1-num': '8,432', 'stat1-lbl': 'Активных полисов',
+            'stat2-num': '4.2 ч', 'stat2-lbl': 'Среднее время выплаты',
+            'stat3-num': '$124,500', 'stat3-lbl': 'Всего выплачено',
+            'stat4-num': '14.7%', 'stat4-lbl': 'Использование фонда',
+            'tool1': 'Моя страховка', 'tool2': 'История выплат', 'tool3': 'Статистика фонда',
+            'tool4': 'Защита кошелька', 'tool5': 'Быстрая проверка', 'tool6': 'Поддержка',
+            'footer-copy': '© 2026 NEXUS Protocol — Твоя безопасность на Solana'
+        },
+        en: {
+            'nav-home': 'Home', 'nav-trade': 'Trade', 'nav-insurance': 'Insurance',
+            'nav-staking': 'Staking', 'nav-dao': 'DAO', 'nav-buy': '📊 Buy NEX',
+            'page-title': 'Insurance Fund', 'page-desc': '0.5% of every NEX transfer automatically protects your assets',
+            'fund-pct': '78%', 'fund-filled': 'Funded',
+            'fund-total': '$847,320', 'fund-reserve': 'Total Reserves',
+            'fund-month': '+$12,430', 'fund-month-label': 'This month',
+            'fund-day': '4.2 SOL', 'fund-day-label': 'Avg. daily contribution',
+            'stat1-num': '8,432', 'stat1-lbl': 'Active policies',
+            'stat2-num': '4.2 h', 'stat2-lbl': 'Avg. payout time',
+            'stat3-num': '$124,500', 'stat3-lbl': 'Total paid',
+            'stat4-num': '14.7%', 'stat4-lbl': 'Fund utilization',
+            'tool1': 'My Insurance', 'tool2': 'Payout History', 'tool3': 'Fund Stats',
+            'tool4': 'Wallet Protection', 'tool5': 'Quick Check', 'tool6': 'Support',
+            'footer-copy': '© 2026 NEXUS Protocol — Your safety on Solana'
+        },
+        es: {
+            'nav-home': 'Inicio', 'nav-trade': 'Comerciar', 'nav-insurance': 'Seguro',
+            'nav-staking': 'Staking', 'nav-dao': 'DAO', 'nav-buy': '📊 Comprar NEX',
+            'page-title': 'Fondo de Seguro', 'page-desc': '0.5% de cada transferencia NEX protege automáticamente tus activos',
+            'fund-pct': '78%', 'fund-filled': 'Financiado',
+            'fund-total': '$847,320', 'fund-reserve': 'Reservas Totales',
+            'fund-month': '+$12,430', 'fund-month-label': 'Este mes',
+            'fund-day': '4.2 SOL', 'fund-day-label': 'Contribución diaria promedio',
+            'stat1-num': '8,432', 'stat1-lbl': 'Pólizas activas',
+            'stat2-num': '4.2 h', 'stat2-lbl': 'Tiempo de pago promedio',
+            'stat3-num': '$124,500', 'stat3-lbl': 'Total pagado',
+            'stat4-num': '14.7%', 'stat4-lbl': 'Utilización del fondo',
+            'tool1': 'Mi Seguro', 'tool2': 'Historial de pagos', 'tool3': 'Estadísticas del fondo',
+            'tool4': 'Protección de cartera', 'tool5': 'Verificación rápida', 'tool6': 'Soporte',
+            'footer-copy': '© 2026 NEXUS Protocol — Tu seguridad en Solana'
+        },
+        fr: {
+            'nav-home': 'Accueil', 'nav-trade': 'Échanger', 'nav-insurance': 'Assurance',
+            'nav-staking': 'Staking', 'nav-dao': 'DAO', 'nav-buy': '📊 Acheter NEX',
+            'page-title': 'Fonds d\'Assurance', 'page-desc': '0.5% de chaque transfert NEX protège automatiquement vos actifs',
+            'fund-pct': '78%', 'fund-filled': 'Financé',
+            'fund-total': '$847,320', 'fund-reserve': 'Réserves Totales',
+            'fund-month': '+$12,430', 'fund-month-label': 'Ce mois-ci',
+            'fund-day': '4.2 SOL', 'fund-day-label': 'Contribution quotidienne moyenne',
+            'stat1-num': '8,432', 'stat1-lbl': 'Polices actives',
+            'stat2-num': '4.2 h', 'stat2-lbl': 'Délai de paiement moyen',
+            'stat3-num': '$124,500', 'stat3-lbl': 'Total payé',
+            'stat4-num': '14.7%', 'stat4-lbl': 'Utilisation du fonds',
+            'tool1': 'Mon Assurance', 'tool2': 'Historique des paiements', 'tool3': 'Statistiques du fonds',
+            'tool4': 'Protection du portefeuille', 'tool5': 'Vérification rapide', 'tool6': 'Support',
+            'footer-copy': '© 2026 NEXUS Protocol — Votre sécurité sur Solana'
+        },
+        de: {
+            'nav-home': 'Startseite', 'nav-trade': 'Handeln', 'nav-insurance': 'Versicherung',
+            'nav-staking': 'Staking', 'nav-dao': 'DAO', 'nav-buy': '📊 NEX kaufen',
+            'page-title': 'Versicherungsfonds', 'page-desc': '0.5% jeder NEX-Überweisung schützt automatisch deine Vermögenswerte',
+            'fund-pct': '78%', 'fund-filled': 'Finanziert',
+            'fund-total': '$847,320', 'fund-reserve': 'Gesamtreserven',
+            'fund-month': '+$12,430', 'fund-month-label': 'Diesen Monat',
+            'fund-day': '4.2 SOL', 'fund-day-label': 'Durchschnittlicher Tagesbeitrag',
+            'stat1-num': '8,432', 'stat1-lbl': 'Aktive Policen',
+            'stat2-num': '4.2 h', 'stat2-lbl': 'Durchschn. Auszahlungszeit',
+            'stat3-num': '$124,500', 'stat3-lbl': 'Insgesamt ausgezahlt',
+            'stat4-num': '14.7%', 'stat4-lbl': 'Fondsnutzung',
+            'tool1': 'Meine Versicherung', 'tool2': 'Auszahlungsverlauf', 'tool3': 'Fondsstatistiken',
+            'tool4': 'Wallet-Schutz', 'tool5': 'Schnellprüfung', 'tool6': 'Support',
+            'footer-copy': '© 2026 NEXUS Protocol — Deine Sicherheit auf Solana'
+        },
+        zh: {
+            'nav-home': '首页', 'nav-trade': '交易', 'nav-insurance': '保险',
+            'nav-staking': '质押', 'nav-dao': 'DAO', 'nav-buy': '📊 购买 NEX',
+            'page-title': '保险基金', 'page-desc': '每笔 NEX 转账的 0.5% 自动保护您的资产',
+            'fund-pct': '78%', 'fund-filled': '已注资',
+            'fund-total': '$847,320', 'fund-reserve': '总储备金',
+            'fund-month': '+$12,430', 'fund-month-label': '本月',
+            'fund-day': '4.2 SOL', 'fund-day-label': '日均贡献',
+            'stat1-num': '8,432', 'stat1-lbl': '有效保单',
+            'stat2-num': '4.2 小时', 'stat2-lbl': '平均赔付时间',
+            'stat3-num': '$124,500', 'stat3-lbl': '总赔付额',
+            'stat4-num': '14.7%', 'stat4-lbl': '基金利用率',
+            'tool1': '我的保险', 'tool2': '赔付历史', 'tool3': '基金统计',
+            'tool4': '钱包保护', 'tool5': '快速检查', 'tool6': '支持',
+            'footer-copy': '© 2026 NEXUS Protocol — 您在 Solana 上的安全保障'
+        },
+        ja: {
+            'nav-home': 'ホーム', 'nav-trade': '取引', 'nav-insurance': '保険',
+            'nav-staking': 'ステーキング', 'nav-dao': 'DAO', 'nav-buy': '📊 NEXを購入',
+            'page-title': '保険基金', 'page-desc': 'NEX送金の0.5%が自動的に資産を保護',
+            'fund-pct': '78%', 'fund-filled': '資金調達済み',
+            'fund-total': '$847,320', 'fund-reserve': '総準備金',
+            'fund-month': '+$12,430', 'fund-month-label': '今月',
+            'fund-day': '4.2 SOL', 'fund-day-label': '平均日次貢献',
+            'stat1-num': '8,432', 'stat1-lbl': '有効な保険',
+            'stat2-num': '4.2時間', 'stat2-lbl': '平均支払い時間',
+            'stat3-num': '$124,500', 'stat3-lbl': '総支払い額',
+            'stat4-num': '14.7%', 'stat4-lbl': '基金利用率',
+            'tool1': '私の保険', 'tool2': '支払い履歴', 'tool3': '基金統計',
+            'tool4': 'ウォレット保護', 'tool5': 'クイックチェック', 'tool6': 'サポート',
+            'footer-copy': '© 2026 NEXUS Protocol — Solanaでのあなたのセキュリティ'
+        },
+        ko: {
+            'nav-home': '홈', 'nav-trade': '거래', 'nav-insurance': '보험',
+            'nav-staking': '스테이킹', 'nav-dao': 'DAO', 'nav-buy': '📊 NEX 구매',
+            'page-title': '보험 기금', 'page-desc': '모든 NEX 전송의 0.5%가 자산을 자동으로 보호합니다',
+            'fund-pct': '78%', 'fund-filled': '자금 조달됨',
+            'fund-total': '$847,320', 'fund-reserve': '총 준비금',
+            'fund-month': '+$12,430', 'fund-month-label': '이번 달',
+            'fund-day': '4.2 SOL', 'fund-day-label': '평균 일일 기여',
+            'stat1-num': '8,432', 'stat1-lbl': '활성 보험',
+            'stat2-num': '4.2 시간', 'stat2-lbl': '평균 지급 시간',
+            'stat3-num': '$124,500', 'stat3-lbl': '총 지급액',
+            'stat4-num': '14.7%', 'stat4-lbl': '기금 활용률',
+            'tool1': '내 보험', 'tool2': '지급 내역', 'tool3': '기금 통계',
+            'tool4': '지갑 보호', 'tool5': '빠른 확인', 'tool6': '지원',
+            'footer-copy': '© 2026 NEXUS Protocol — Solana에서의 당신의 안전'
+        }
+    };
+
+    let currentLang = localStorage.getItem('nexusLang') || 'ru';
+
+    function applyLanguage(lang) {
+        if (!translations[lang]) return;
+        const t = translations[lang];
+        document.documentElement.lang = lang;
+        document.querySelectorAll('[data-i18n]').forEach(el => {
+            const key = el.getAttribute('data-i18n');
+            if (t[key]) {
+                if (el.tagName === 'INPUT' || el.tagName === 'TEXTAREA') {
+                    el.placeholder = t[key];
+                } else {
+                    el.textContent = t[key];
+                }
+            }
+        });
+        document.getElementById('currentLangLabel').textContent = lang.toUpperCase();
+        document.querySelectorAll('.lang-dropdown button').forEach(btn => {
+            btn.classList.toggle('active', btn.dataset.lang === lang);
+        });
+        localStorage.setItem('nexusLang', lang);
+        currentLang = lang;
+    }
+
+    document.getElementById('langToggle').addEventListener('click', (e) => {
+        e.stopPropagation();
+        document.getElementById('langDropdown').classList.toggle('show');
+    });
+    document.addEventListener('click', () => {
+        document.getElementById('langDropdown').classList.remove('show');
+    });
+    document.querySelectorAll('.lang-dropdown button').forEach(btn => {
+        btn.addEventListener('click', (e) => {
+            e.stopPropagation();
+            applyLanguage(btn.dataset.lang);
+            document.getElementById('langDropdown').classList.remove('show');
+        });
+    });
+    applyLanguage(currentLang);
+</script>
 </body>
 </html>
