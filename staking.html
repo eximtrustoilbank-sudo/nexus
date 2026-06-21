@@ -34,6 +34,17 @@
         .nav-links a:hover { color: #fff; background: rgba(108,60,225,0.12); }
         .nav-links .active { color: #fff; background: rgba(108,60,225,0.15); }
         .btn-buy { background: linear-gradient(135deg, #6C3CE1, #00d4ff); color: #0b0e1a !important; padding: 6px 18px; border-radius: 40px; font-weight: 700; }
+        .btn-buy:hover { transform: scale(1.04); box-shadow: 0 0 30px rgba(108,60,225,0.3); }
+        /* ——— LANGUAGE SWITCHER ——— */
+        .lang-switcher { position: relative; display: inline-block; margin-left: 4px; }
+        .lang-btn { background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.08); color: #eef2f8; padding: 4px 12px; border-radius: 40px; font-size: 12px; cursor: pointer; font-weight: 600; transition: 0.2s; display: flex; align-items: center; gap: 4px; }
+        .lang-btn:hover { background: rgba(108,60,225,0.15); border-color: #6C3CE1; }
+        .lang-dropdown { position: absolute; top: 120%; right: 0; background: rgba(7,9,15,0.97); backdrop-filter: blur(20px); border: 1px solid rgba(255,255,255,0.06); border-radius: 16px; padding: 6px 0; min-width: 140px; display: none; z-index: 999; box-shadow: 0 20px 60px rgba(0,0,0,0.6); }
+        .lang-dropdown.show { display: block; }
+        .lang-dropdown button { background: none; border: none; color: #b0b8d1; padding: 6px 18px; width: 100%; text-align: left; font-size: 12px; font-weight: 500; cursor: pointer; transition: 0.1s; font-family: inherit; }
+        .lang-dropdown button:hover { background: rgba(108,60,225,0.08); color: #fff; }
+        .lang-dropdown button.active { color: #00d4ff; font-weight: 700; }
+        /* ——— PAGE ——— */
         .page-header { text-align: center; padding: 20px 0; }
         .page-header h1 { font-size: 2.5rem; font-weight: 900; }
         .page-header h1 span { background: linear-gradient(135deg, #6C3CE1, #00d4ff); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
@@ -58,6 +69,7 @@
             body { padding-top: 110px; }
             .header-inner { flex-direction: column; align-items: stretch; text-align: center; }
             .nav-links { justify-content: center; }
+            .lang-switcher { margin: 4px auto 0; }
             .page-header h1 { font-size: 1.8rem; }
             .pools-grid { grid-template-columns: 1fr 1fr; }
         }
@@ -71,44 +83,221 @@
     <div class="container header-inner">
         <a href="index.html" class="logo"><img src="https://raw.githubusercontent.com/eximtrustoilbank-sudo/nexus/refs/heads/main/nexus_logo.png" alt="NEXUS"><span>NEXUS</span></a>
         <div class="nav-links">
-            <a href="index.html">Главная</a>
-            <a href="trade.html">Торги</a>
-            <a href="insurance.html">Страховка</a>
-            <a href="staking.html" class="active">Стейкинг</a>
-            <a href="dao.html">DAO</a>
-            <a href="https://www.geckoterminal.com/solana/pools/FKRKSVTQpCngomVftV6HRhPXAp9BJhbWoFwH1JwY1XA6" target="_blank" class="btn-buy">📊 Купить NEX</a>
+            <a href="index.html" data-i18n="nav-home">Главная</a>
+            <a href="trade.html" data-i18n="nav-trade">Торги</a>
+            <a href="insurance.html" data-i18n="nav-insurance">Страховка</a>
+            <a href="staking.html" class="active" data-i18n="nav-staking">Стейкинг</a>
+            <a href="dao.html" data-i18n="nav-dao">DAO</a>
+            <a href="https://www.geckoterminal.com/solana/pools/FKRKSVTQpCngomVftV6HRhPXAp9BJhbWoFwH1JwY1XA6" target="_blank" class="btn-buy" data-i18n="nav-buy">📊 Купить NEX</a>
+            <!-- Language Switcher -->
+            <div class="lang-switcher">
+                <button class="lang-btn" id="langToggle">🌐 <span id="currentLangLabel">RU</span></button>
+                <div class="lang-dropdown" id="langDropdown">
+                    <button data-lang="ru" class="active">🇷🇺 Русский</button>
+                    <button data-lang="en">🇬🇧 English</button>
+                    <button data-lang="es">🇪🇸 Español</button>
+                    <button data-lang="fr">🇫🇷 Français</button>
+                    <button data-lang="de">🇩🇪 Deutsch</button>
+                    <button data-lang="zh">🇨🇳 中文</button>
+                    <button data-lang="ja">🇯🇵 日本語</button>
+                    <button data-lang="ko">🇰🇷 한국어</button>
+                </div>
+            </div>
         </div>
     </div>
 </header>
 <div class="container">
-    <div class="page-header"><h1>🪙 <span>Стейкинг NEX</span></h1><p>Заморозь токены и получай пассивный доход</p></div>
+    <div class="page-header"><h1>🪙 <span data-i18n="page-title">Стейкинг NEX</span></h1><p data-i18n="page-desc">Заморозь токены и получай пассивный доход</p></div>
     <div class="stats-grid">
-        <div class="stat-card"><div class="num">18.3%</div><div class="lbl">Средний APR</div></div>
-        <div class="stat-card"><div class="num">$2.4M</div><div class="lbl">Всего застейкано</div></div>
-        <div class="stat-card"><div class="num">12.8K</div><div class="lbl">Участников</div></div>
-        <div class="stat-card"><div class="num">3.2K</div><div class="lbl">NEX в сутки</div></div>
+        <div class="stat-card"><div class="num" data-i18n="stat1-num">18.3%</div><div class="lbl" data-i18n="stat1-lbl">Средний APR</div></div>
+        <div class="stat-card"><div class="num" data-i18n="stat2-num">$2.4M</div><div class="lbl" data-i18n="stat2-lbl">Всего застейкано</div></div>
+        <div class="stat-card"><div class="num" data-i18n="stat3-num">12.8K</div><div class="lbl" data-i18n="stat3-lbl">Участников</div></div>
+        <div class="stat-card"><div class="num" data-i18n="stat4-num">3.2K</div><div class="lbl" data-i18n="stat4-lbl">NEX в сутки</div></div>
     </div>
     <div class="pools-grid">
         <a href="https://solana.com/staking" target="_blank" class="pool-card">
-            <div class="icon">🪙</div><div class="name">NEX Гибкий</div><div class="apy">12.5% APR</div><div class="duration">⏱ Без блокировки</div><div class="status">✅ Активен</div>
+            <div class="icon">🪙</div><div class="name" data-i18n="pool1-name">NEX Гибкий</div><div class="apy" data-i18n="pool1-apy">12.5% APR</div><div class="duration" data-i18n="pool1-duration">⏱ Без блокировки</div><div class="status" data-i18n="pool1-status">✅ Активен</div>
         </a>
         <a href="https://marinade.finance/" target="_blank" class="pool-card">
-            <div class="icon">💰</div><div class="name">NEX 30 дней</div><div class="apy">18.3% APR</div><div class="duration">⏱ 30 дней</div><div class="status">✅ Активен</div>
+            <div class="icon">💰</div><div class="name" data-i18n="pool2-name">NEX 30 дней</div><div class="apy" data-i18n="pool2-apy">18.3% APR</div><div class="duration" data-i18n="pool2-duration">⏱ 30 дней</div><div class="status" data-i18n="pool2-status">✅ Активен</div>
         </a>
         <a href="https://jito.network/" target="_blank" class="pool-card">
-            <div class="icon">💎</div><div class="name">NEX 90 дней</div><div class="apy">25.4% APR</div><div class="duration">⏱ 90 дней</div><div class="status">✅ Активен</div>
+            <div class="icon">💎</div><div class="name" data-i18n="pool3-name">NEX 90 дней</div><div class="apy" data-i18n="pool3-apy">25.4% APR</div><div class="duration" data-i18n="pool3-duration">⏱ 90 дней</div><div class="status" data-i18n="pool3-status">✅ Активен</div>
         </a>
         <a href="https://sanctum.so/" target="_blank" class="pool-card">
-            <div class="icon">🌟</div><div class="name">NEX VIP</div><div class="apy">32.1% APR</div><div class="duration">⏱ 1 год</div><div class="status soon">⏳ Скоро</div>
+            <div class="icon">🌟</div><div class="name" data-i18n="pool4-name">NEX VIP</div><div class="apy" data-i18n="pool4-apy">32.1% APR</div><div class="duration" data-i18n="pool4-duration">⏱ 1 год</div><div class="status soon" data-i18n="pool4-status">⏳ Скоро</div>
         </a>
     </div>
 </div>
 <footer>
     <div class="container">
-        <div class="links"><a href="index.html">Главная</a><a href="trade.html">Торги</a><a href="insurance.html">Страховка</a><a href="staking.html">Стейкинг</a><a href="dao.html">DAO</a></div>
+        <div class="links">
+            <a href="index.html" data-i18n="nav-home">Главная</a>
+            <a href="trade.html" data-i18n="nav-trade">Торги</a>
+            <a href="insurance.html" data-i18n="nav-insurance">Страховка</a>
+            <a href="staking.html" data-i18n="nav-staking">Стейкинг</a>
+            <a href="dao.html" data-i18n="nav-dao">DAO</a>
+        </div>
         <p>📜 6WBoPatSisMYCN8y6xZECu4E9VcMhqyE56vD3zrQbCts</p>
-        <p style="margin-top:6px;font-size:0.65rem;color:#5a6488;">© 2026 NEXUS Protocol — Зарабатывай с нами</p>
+        <p style="margin-top:6px;font-size:0.65rem;color:#5a6488;" data-i18n="footer-copy">© 2026 NEXUS Protocol — Зарабатывай с нами</p>
     </div>
 </footer>
+<script>
+    // ——— ПЕРЕВОДЧИК НА 8 ЯЗЫКОВ ———
+    const translations = {
+        ru: {
+            'nav-home': 'Главная', 'nav-trade': 'Торги', 'nav-insurance': 'Страховка',
+            'nav-staking': 'Стейкинг', 'nav-dao': 'DAO', 'nav-buy': '📊 Купить NEX',
+            'page-title': 'Стейкинг NEX', 'page-desc': 'Заморозь токены и получай пассивный доход',
+            'stat1-num': '18.3%', 'stat1-lbl': 'Средний APR',
+            'stat2-num': '$2.4M', 'stat2-lbl': 'Всего застейкано',
+            'stat3-num': '12.8K', 'stat3-lbl': 'Участников',
+            'stat4-num': '3.2K', 'stat4-lbl': 'NEX в сутки',
+            'pool1-name': 'NEX Гибкий', 'pool1-apy': '12.5% APR', 'pool1-duration': '⏱ Без блокировки', 'pool1-status': '✅ Активен',
+            'pool2-name': 'NEX 30 дней', 'pool2-apy': '18.3% APR', 'pool2-duration': '⏱ 30 дней', 'pool2-status': '✅ Активен',
+            'pool3-name': 'NEX 90 дней', 'pool3-apy': '25.4% APR', 'pool3-duration': '⏱ 90 дней', 'pool3-status': '✅ Активен',
+            'pool4-name': 'NEX VIP', 'pool4-apy': '32.1% APR', 'pool4-duration': '⏱ 1 год', 'pool4-status': '⏳ Скоро',
+            'footer-copy': '© 2026 NEXUS Protocol — Зарабатывай с нами'
+        },
+        en: {
+            'nav-home': 'Home', 'nav-trade': 'Trade', 'nav-insurance': 'Insurance',
+            'nav-staking': 'Staking', 'nav-dao': 'DAO', 'nav-buy': '📊 Buy NEX',
+            'page-title': 'NEX Staking', 'page-desc': 'Lock your tokens and earn passive income',
+            'stat1-num': '18.3%', 'stat1-lbl': 'Avg. APR',
+            'stat2-num': '$2.4M', 'stat2-lbl': 'Total Staked',
+            'stat3-num': '12.8K', 'stat3-lbl': 'Stakers',
+            'stat4-num': '3.2K', 'stat4-lbl': 'NEX per day',
+            'pool1-name': 'NEX Flexible', 'pool1-apy': '12.5% APR', 'pool1-duration': '⏱ No lock', 'pool1-status': '✅ Active',
+            'pool2-name': 'NEX 30 days', 'pool2-apy': '18.3% APR', 'pool2-duration': '⏱ 30 days', 'pool2-status': '✅ Active',
+            'pool3-name': 'NEX 90 days', 'pool3-apy': '25.4% APR', 'pool3-duration': '⏱ 90 days', 'pool3-status': '✅ Active',
+            'pool4-name': 'NEX VIP', 'pool4-apy': '32.1% APR', 'pool4-duration': '⏱ 1 year', 'pool4-status': '⏳ Soon',
+            'footer-copy': '© 2026 NEXUS Protocol — Earn with us'
+        },
+        es: {
+            'nav-home': 'Inicio', 'nav-trade': 'Comerciar', 'nav-insurance': 'Seguro',
+            'nav-staking': 'Staking', 'nav-dao': 'DAO', 'nav-buy': '📊 Comprar NEX',
+            'page-title': 'Staking NEX', 'page-desc': 'Bloquea tus tokens y obtén ingresos pasivos',
+            'stat1-num': '18.3%', 'stat1-lbl': 'APR Promedio',
+            'stat2-num': '$2.4M', 'stat2-lbl': 'Total Staked',
+            'stat3-num': '12.8K', 'stat3-lbl': 'Stakers',
+            'stat4-num': '3.2K', 'stat4-lbl': 'NEX por día',
+            'pool1-name': 'NEX Flexible', 'pool1-apy': '12.5% APR', 'pool1-duration': '⏱ Sin bloqueo', 'pool1-status': '✅ Activo',
+            'pool2-name': 'NEX 30 días', 'pool2-apy': '18.3% APR', 'pool2-duration': '⏱ 30 días', 'pool2-status': '✅ Activo',
+            'pool3-name': 'NEX 90 días', 'pool3-apy': '25.4% APR', 'pool3-duration': '⏱ 90 días', 'pool3-status': '✅ Activo',
+            'pool4-name': 'NEX VIP', 'pool4-apy': '32.1% APR', 'pool4-duration': '⏱ 1 año', 'pool4-status': '⏳ Próximamente',
+            'footer-copy': '© 2026 NEXUS Protocol — Gana con nosotros'
+        },
+        fr: {
+            'nav-home': 'Accueil', 'nav-trade': 'Échanger', 'nav-insurance': 'Assurance',
+            'nav-staking': 'Staking', 'nav-dao': 'DAO', 'nav-buy': '📊 Acheter NEX',
+            'page-title': 'Staking NEX', 'page-desc': 'Bloquez vos tokens et gagnez des revenus passifs',
+            'stat1-num': '18.3%', 'stat1-lbl': 'APR Moyen',
+            'stat2-num': '$2.4M', 'stat2-lbl': 'Total Staked',
+            'stat3-num': '12.8K', 'stat3-lbl': 'Stakers',
+            'stat4-num': '3.2K', 'stat4-lbl': 'NEX par jour',
+            'pool1-name': 'NEX Flexible', 'pool1-apy': '12.5% APR', 'pool1-duration': '⏱ Sans blocage', 'pool1-status': '✅ Actif',
+            'pool2-name': 'NEX 30 jours', 'pool2-apy': '18.3% APR', 'pool2-duration': '⏱ 30 jours', 'pool2-status': '✅ Actif',
+            'pool3-name': 'NEX 90 jours', 'pool3-apy': '25.4% APR', 'pool3-duration': '⏱ 90 jours', 'pool3-status': '✅ Actif',
+            'pool4-name': 'NEX VIP', 'pool4-apy': '32.1% APR', 'pool4-duration': '⏱ 1 an', 'pool4-status': '⏳ Bientôt',
+            'footer-copy': '© 2026 NEXUS Protocol — Gagnez avec nous'
+        },
+        de: {
+            'nav-home': 'Startseite', 'nav-trade': 'Handeln', 'nav-insurance': 'Versicherung',
+            'nav-staking': 'Staking', 'nav-dao': 'DAO', 'nav-buy': '📊 NEX kaufen',
+            'page-title': 'NEX Staking', 'page-desc': 'Sperre deine Tokens und verdiene passives Einkommen',
+            'stat1-num': '18.3%', 'stat1-lbl': 'Durchschn. APR',
+            'stat2-num': '$2.4M', 'stat2-lbl': 'Total gestaked',
+            'stat3-num': '12.8K', 'stat3-lbl': 'Staker',
+            'stat4-num': '3.2K', 'stat4-lbl': 'NEX pro Tag',
+            'pool1-name': 'NEX Flexibel', 'pool1-apy': '12.5% APR', 'pool1-duration': '⏱ Keine Sperre', 'pool1-status': '✅ Aktiv',
+            'pool2-name': 'NEX 30 Tage', 'pool2-apy': '18.3% APR', 'pool2-duration': '⏱ 30 Tage', 'pool2-status': '✅ Aktiv',
+            'pool3-name': 'NEX 90 Tage', 'pool3-apy': '25.4% APR', 'pool3-duration': '⏱ 90 Tage', 'pool3-status': '✅ Aktiv',
+            'pool4-name': 'NEX VIP', 'pool4-apy': '32.1% APR', 'pool4-duration': '⏱ 1 Jahr', 'pool4-status': '⏳ Bald',
+            'footer-copy': '© 2026 NEXUS Protocol — Verdiene mit uns'
+        },
+        zh: {
+            'nav-home': '首页', 'nav-trade': '交易', 'nav-insurance': '保险',
+            'nav-staking': '质押', 'nav-dao': 'DAO', 'nav-buy': '📊 购买 NEX',
+            'page-title': 'NEX 质押', 'page-desc': '锁定您的代币并获得被动收入',
+            'stat1-num': '18.3%', 'stat1-lbl': '平均 APR',
+            'stat2-num': '$2.4M', 'stat2-lbl': '总质押量',
+            'stat3-num': '12.8K', 'stat3-lbl': '质押者',
+            'stat4-num': '3.2K', 'stat4-lbl': '每日 NEX',
+            'pool1-name': 'NEX 灵活', 'pool1-apy': '12.5% APR', 'pool1-duration': '⏱ 无锁定', 'pool1-status': '✅ 活跃',
+            'pool2-name': 'NEX 30天', 'pool2-apy': '18.3% APR', 'pool2-duration': '⏱ 30天', 'pool2-status': '✅ 活跃',
+            'pool3-name': 'NEX 90天', 'pool3-apy': '25.4% APR', 'pool3-duration': '⏱ 90天', 'pool3-status': '✅ 活跃',
+            'pool4-name': 'NEX VIP', 'pool4-apy': '32.1% APR', 'pool4-duration': '⏱ 1年', 'pool4-status': '⏳ 即将推出',
+            'footer-copy': '© 2026 NEXUS Protocol — 与我们一同赚取'
+        },
+        ja: {
+            'nav-home': 'ホーム', 'nav-trade': '取引', 'nav-insurance': '保険',
+            'nav-staking': 'ステーキング', 'nav-dao': 'DAO', 'nav-buy': '📊 NEXを購入',
+            'page-title': 'NEX ステーキング', 'page-desc': 'トークンをロックして受動的収入を得る',
+            'stat1-num': '18.3%', 'stat1-lbl': '平均APR',
+            'stat2-num': '$2.4M', 'stat2-lbl': '総ステーク量',
+            'stat3-num': '12.8K', 'stat3-lbl': 'ステーカー',
+            'stat4-num': '3.2K', 'stat4-lbl': '1日あたりのNEX',
+            'pool1-name': 'NEX フレキシブル', 'pool1-apy': '12.5% APR', 'pool1-duration': '⏱ ロックなし', 'pool1-status': '✅ アクティブ',
+            'pool2-name': 'NEX 30日', 'pool2-apy': '18.3% APR', 'pool2-duration': '⏱ 30日', 'pool2-status': '✅ アクティブ',
+            'pool3-name': 'NEX 90日', 'pool3-apy': '25.4% APR', 'pool3-duration': '⏱ 90日', 'pool3-status': '✅ アクティブ',
+            'pool4-name': 'NEX VIP', 'pool4-apy': '32.1% APR', 'pool4-duration': '⏱ 1年', 'pool4-status': '⏳ 近日公開',
+            'footer-copy': '© 2026 NEXUS Protocol — 私たちと一緒に稼ぐ'
+        },
+        ko: {
+            'nav-home': '홈', 'nav-trade': '거래', 'nav-insurance': '보험',
+            'nav-staking': '스테이킹', 'nav-dao': 'DAO', 'nav-buy': '📊 NEX 구매',
+            'page-title': 'NEX 스테이킹', 'page-desc': '토큰을 잠그고 수동적 소득을 얻으세요',
+            'stat1-num': '18.3%', 'stat1-lbl': '평균 APR',
+            'stat2-num': '$2.4M', 'stat2-lbl': '총 스테이크',
+            'stat3-num': '12.8K', 'stat3-lbl': '스테이커',
+            'stat4-num': '3.2K', 'stat4-lbl': '일일 NEX',
+            'pool1-name': 'NEX 유연', 'pool1-apy': '12.5% APR', 'pool1-duration': '⏱ 잠금 없음', 'pool1-status': '✅ 활성',
+            'pool2-name': 'NEX 30일', 'pool2-apy': '18.3% APR', 'pool2-duration': '⏱ 30일', 'pool2-status': '✅ 활성',
+            'pool3-name': 'NEX 90일', 'pool3-apy': '25.4% APR', 'pool3-duration': '⏱ 90일', 'pool3-status': '✅ 활성',
+            'pool4-name': 'NEX VIP', 'pool4-apy': '32.1% APR', 'pool4-duration': '⏱ 1년', 'pool4-status': '⏳ 곧',
+            'footer-copy': '© 2026 NEXUS Protocol — 우리와 함께 수익을'
+        }
+    };
+
+    let currentLang = localStorage.getItem('nexusLang') || 'ru';
+
+    function applyLanguage(lang) {
+        if (!translations[lang]) return;
+        const t = translations[lang];
+        document.documentElement.lang = lang;
+        document.querySelectorAll('[data-i18n]').forEach(el => {
+            const key = el.getAttribute('data-i18n');
+            if (t[key]) {
+                if (el.tagName === 'INPUT' || el.tagName === 'TEXTAREA') {
+                    el.placeholder = t[key];
+                } else {
+                    el.textContent = t[key];
+                }
+            }
+        });
+        document.getElementById('currentLangLabel').textContent = lang.toUpperCase();
+        document.querySelectorAll('.lang-dropdown button').forEach(btn => {
+            btn.classList.toggle('active', btn.dataset.lang === lang);
+        });
+        localStorage.setItem('nexusLang', lang);
+        currentLang = lang;
+    }
+
+    document.getElementById('langToggle').addEventListener('click', (e) => {
+        e.stopPropagation();
+        document.getElementById('langDropdown').classList.toggle('show');
+    });
+    document.addEventListener('click', () => {
+        document.getElementById('langDropdown').classList.remove('show');
+    });
+    document.querySelectorAll('.lang-dropdown button').forEach(btn => {
+        btn.addEventListener('click', (e) => {
+            e.stopPropagation();
+            applyLanguage(btn.dataset.lang);
+            document.getElementById('langDropdown').classList.remove('show');
+        });
+    });
+    applyLanguage(currentLang);
+</script>
 </body>
 </html>
