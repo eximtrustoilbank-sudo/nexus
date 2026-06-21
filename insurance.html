@@ -17,11 +17,9 @@
         }
         a { color: #00e5ff; text-decoration: none; }
         .container { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
-
         .glow { position: fixed; border-radius: 50%; filter: blur(150px); opacity: 0.12; pointer-events: none; z-index: 0; }
         .glow-1 { width: 600px; height: 600px; background: #ff6b6b; top: -200px; right: -100px; }
         .glow-2 { width: 600px; height: 600px; background: #00d4ff; bottom: -200px; left: -100px; }
-
         header {
             position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
             padding: 12px 0; background: rgba(7,9,15,0.92); backdrop-filter: blur(20px);
@@ -36,32 +34,26 @@
         .nav-links a:hover { color: #fff; background: rgba(108,60,225,0.12); }
         .nav-links .active { color: #fff; background: rgba(108,60,225,0.15); }
         .btn-buy { background: linear-gradient(135deg, #6C3CE1, #00d4ff); color: #0b0e1a !important; padding: 6px 18px; border-radius: 40px; font-weight: 700; }
-
         .page-header { text-align: center; padding: 20px 0; }
         .page-header h1 { font-size: 2.5rem; font-weight: 900; }
         .page-header h1 span { background: linear-gradient(135deg, #6C3CE1, #00d4ff); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
         .page-header p { color: #8892b0; }
-
         .fund-visual { display: flex; justify-content: center; align-items: center; gap: 30px; flex-wrap: wrap; padding: 20px 0; }
         .ring { width: 140px; height: 140px; border-radius: 50%; background: conic-gradient(#00d4ff 0% 78%, #6C3CE1 78% 100%); display: flex; align-items: center; justify-content: center; }
         .ring-inner { width: 100px; height: 100px; border-radius: 50%; background: #07090f; display: flex; flex-direction: column; align-items: center; justify-content: center; }
         .ring-inner .big { font-size: 1.8rem; font-weight: 800; color: #00d4ff; }
         .ring-inner .small { font-size: 0.7rem; color: #8892b0; }
-
         .stats-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 12px; padding: 20px 0; }
         .stat-card { background: rgba(255,255,255,0.02); border: 1px solid rgba(255,255,255,0.04); border-radius: 14px; padding: 16px; text-align: center; }
         .stat-card .num { font-size: 1.3rem; font-weight: 700; color: #00d4ff; }
         .stat-card .lbl { font-size: 0.7rem; color: #8892b0; }
-
         .tools-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(180px, 1fr)); gap: 8px; padding: 16px 0 40px; }
-        .tool-card { background: rgba(255,255,255,0.02); border: 1px solid rgba(255,255,255,0.04); border-radius: 12px; padding: 12px 16px; display: flex; align-items: center; gap: 10px; font-size: 13px; font-weight: 500; color: #b0b8d1; transition: 0.2s; }
+        .tool-card { background: rgba(255,255,255,0.02); border: 1px solid rgba(255,255,255,0.04); border-radius: 12px; padding: 12px 16px; display: flex; align-items: center; gap: 10px; font-size: 13px; font-weight: 500; color: #b0b8d1; transition: 0.2s; cursor: pointer; }
         .tool-card:hover { border-color: #6C3CE1; background: rgba(108,60,225,0.06); color: #fff; }
         .tool-card .icon { font-size: 20px; }
-
         footer { padding: 24px 0; border-top: 1px solid rgba(255,255,255,0.04); text-align: center; color: #5a6488; font-size: 0.75rem; }
         footer .links a { color: #b0b8d1; margin: 0 12px; font-size: 12px; }
         footer .links a:hover { color: #fff; }
-
         @media (max-width: 700px) {
             body { padding-top: 110px; }
             .header-inner { flex-direction: column; align-items: stretch; text-align: center; }
@@ -71,70 +63,50 @@
     </style>
 </head>
 <body>
-
 <div class="glow glow-1"></div>
 <div class="glow glow-2"></div>
-
 <header>
     <div class="container header-inner">
-        <a href="index.html" class="logo">
-            <img src="https://raw.githubusercontent.com/eximtrustoilbank-sudo/nexus/refs/heads/main/nexus_logo.png" alt="NEXUS">
-            <span>NEXUS</span>
-        </a>
+        <a href="index.html" class="logo"><img src="https://raw.githubusercontent.com/eximtrustoilbank-sudo/nexus/refs/heads/main/nexus_logo.png" alt="NEXUS"><span>NEXUS</span></a>
         <div class="nav-links">
-            <a href="index.html">Home</a>
-            <a href="trade.html">Trade</a>
-            <a href="insurance.html" class="active">Insurance</a>
-            <a href="staking.html">Staking</a>
+            <a href="index.html">Главная</a>
+            <a href="trade.html">Торги</a>
+            <a href="insurance.html" class="active">Страховка</a>
+            <a href="staking.html">Стейкинг</a>
             <a href="dao.html">DAO</a>
-            <a href="https://www.geckoterminal.com/solana/pools/FKRKSVTQpCngomVftV6HRhPXAp9BJhbWoFwH1JwY1XA6" target="_blank" class="btn-buy">📊 Buy NEX</a>
+            <a href="https://www.geckoterminal.com/solana/pools/FKRKSVTQpCngomVftV6HRhPXAp9BJhbWoFwH1JwY1XA6" target="_blank" class="btn-buy">📊 Купить NEX</a>
         </div>
     </div>
 </header>
-
 <div class="container">
-    <div class="page-header">
-        <h1>🛡️ <span>Страховой фонд</span></h1>
-        <p>0.5% с каждого перевода NEX автоматически защищает ваши активы</p>
-    </div>
-
+    <div class="page-header"><h1>🛡️ <span>Страховой фонд</span></h1><p>0.5% с каждого перевода NEX автоматически защищает ваши активы</p></div>
     <div class="fund-visual">
         <div class="ring"><div class="ring-inner"><span class="big">78%</span><span class="small">Заполнен</span></div></div>
         <div><span style="font-size:2rem;font-weight:800;color:#00d4ff;">$847,320</span><br><span style="color:#8892b0;">Общий резерв</span></div>
         <div><span style="font-size:1.2rem;font-weight:600;">+$12,430</span><br><span style="color:#8892b0;">За этот месяц</span></div>
         <div><span style="font-size:1.2rem;font-weight:600;">4.2 SOL</span><br><span style="color:#8892b0;">Средний взнос в день</span></div>
     </div>
-
     <div class="stats-grid">
         <div class="stat-card"><div class="num">8,432</div><div class="lbl">Активных полисов</div></div>
         <div class="stat-card"><div class="num">4.2 ч</div><div class="lbl">Среднее время выплаты</div></div>
         <div class="stat-card"><div class="num">$124,500</div><div class="lbl">Всего выплачено</div></div>
         <div class="stat-card"><div class="num">14.7%</div><div class="lbl">Использование фонда</div></div>
     </div>
-
     <div class="tools-grid">
-        <div class="tool-card"><span class="icon">🛡️</span> Моя страховка</div>
-        <div class="tool-card"><span class="icon">📋</span> История выплат</div>
-        <div class="tool-card"><span class="icon">📊</span> Статистика фонда</div>
-        <div class="tool-card"><span class="icon">🔒</span> Защита кошелька</div>
-        <div class="tool-card"><span class="icon">⚡</span> Быстрая проверка</div>
-        <div class="tool-card"><span class="icon">📞</span> Поддержка</div>
+        <a href="https://www.nexusmutual.io/" target="_blank" class="tool-card"><span class="icon">🛡️</span> Моя страховка</a>
+        <a href="https://etherscan.io/" target="_blank" class="tool-card"><span class="icon">📋</span> История выплат</a>
+        <a href="https://defillama.com/" target="_blank" class="tool-card"><span class="icon">📊</span> Статистика фонда</a>
+        <a href="https://phantom.app/" target="_blank" class="tool-card"><span class="icon">🔒</span> Защита кошелька</a>
+        <a href="https://rugcheck.xyz/" target="_blank" class="tool-card"><span class="icon">⚡</span> Быстрая проверка</a>
+        <a href="#" target="_blank" class="tool-card"><span class="icon">📞</span> Поддержка</a>
     </div>
 </div>
-
 <footer>
     <div class="container">
-        <div class="links">
-            <a href="index.html">Home</a>
-            <a href="trade.html">Trade</a>
-            <a href="insurance.html">Insurance</a>
-            <a href="staking.html">Staking</a>
-            <a href="dao.html">DAO</a>
-        </div>
+        <div class="links"><a href="index.html">Главная</a><a href="trade.html">Торги</a><a href="insurance.html">Страховка</a><a href="staking.html">Стейкинг</a><a href="dao.html">DAO</a></div>
         <p>📜 6WBoPatSisMYCN8y6xZECu4E9VcMhqyE56vD3zrQbCts</p>
         <p style="margin-top:6px;font-size:0.65rem;color:#5a6488;">© 2026 NEXUS Protocol — Твоя безопасность на Solana</p>
     </div>
 </footer>
-
 </body>
 </html>
